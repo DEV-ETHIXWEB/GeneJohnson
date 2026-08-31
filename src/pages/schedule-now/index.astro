@@ -20,7 +20,7 @@ import { breadcrumbSchema } from "../../lib/schema";
   />
 
   <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-    <form data-animate class="rounded-3xl border border-navy-900/10 bg-white p-8 shadow-soft" action={formEndpoint} method="POST">
+    <form data-animate x-data="{ service: '' }" class="rounded-3xl border border-navy-900/10 bg-white p-8 shadow-soft" action={formEndpoint} method="POST">
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
           <label class="text-sm font-semibold text-ink-700" for="name">Full name</label>
@@ -36,10 +36,19 @@ import { breadcrumbSchema } from "../../lib/schema";
         </div>
         <div class="sm:col-span-2">
           <label class="text-sm font-semibold text-ink-700" for="service">What do you need help with?</label>
-          <select id="service" name="service" class="mt-1.5 w-full rounded-xl border border-navy-900/15 bg-white px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none">
+          <select id="service" name="service" x-model="service" class="mt-1.5 w-full rounded-xl border border-navy-900/15 bg-white px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none">
             {verticals.map((v) => <option value={v.title}>{v.title}</option>)}
-            <option value="Not sure">Not sure / other</option>
+            <option value="Other">Other</option>
           </select>
+        </div>
+        <div class="sm:col-span-2" x-show="service === 'Other'" x-cloak x-transition>
+          <label class="text-sm font-semibold text-ink-700" for="service-other">Please specify</label>
+          <input
+            id="service-other"
+            name="service_other"
+            placeholder="Tell us briefly what you need help with"
+            class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"
+          />
         </div>
         <div class="sm:col-span-2">
           <label class="text-sm font-semibold text-ink-700" for="details">Details</label>
