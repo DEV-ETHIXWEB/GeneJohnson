@@ -34,7 +34,7 @@ const { intro, highlights, faqs = [], image, icon, related } = Astro.props;
     </div>
 
     <div data-animate class="overflow-hidden rounded-[2rem] shadow-lift">
-      <Image src={getImage(image)} alt={intro.slice(0, 60)} width={640} height={480} class="h-full w-full object-cover" />
+      <Image src={getImage(image)} alt={intro.slice(0, 60)} width={640} height={480} densities={[1, 2]} quality={88} class="h-full w-full object-cover" />
     </div>
   </div>
 
@@ -60,9 +60,9 @@ const { intro, highlights, faqs = [], image, icon, related } = Astro.props;
       <h2 class="font-display text-2xl font-bold text-navy-900">Related services</h2>
       <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-animate-group>
         {related.slice(0, 6).map((r) => (
-          <a href={`/${r.slug}/`} data-animate-item class="group flex items-center gap-4 rounded-2xl border border-navy-900/10 bg-white p-4 transition-colors hover:border-brand-red-200 hover:bg-cream-100">
-            <span class="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-white">
-              <Icon name={r.icon} class="h-11 w-11 text-navy-700 transition-colors duration-300 group-hover:text-brand-red-600" />
+          <a href={`/${r.slug}/`} data-animate-item class="group flex items-center gap-4 rounded-2xl border border-navy-900/10 bg-white p-5 transition-colors hover:border-brand-red-200 hover:bg-cream-100">
+            <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-white">
+              <Icon name={r.icon} class="h-12 w-12 text-navy-700 transition-colors duration-300 group-hover:text-brand-red-600" />
             </span>
             <span class="text-sm font-semibold text-navy-900">{r.title}</span>
           </a>

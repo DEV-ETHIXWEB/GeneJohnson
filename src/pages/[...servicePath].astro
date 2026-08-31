@@ -39,6 +39,7 @@ const path = `/${page.slug}/`;
     eyebrow={vertical.title}
     title={page.title}
     tagline={page.tagline}
+    icon={page.icon}
     breadcrumbs={[{ name: "Home", href: "/" }, { name: vertical.title, href: `/${vertical.slug}/` }, { name: page.title }]}
   />
   <ServiceBody intro={page.intro} highlights={page.highlights} faqs={page.faqs} image={page.image} icon={page.icon} related={related} />

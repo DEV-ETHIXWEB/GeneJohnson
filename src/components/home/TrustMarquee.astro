@@ -23,7 +23,7 @@ const badges = [
 
 <section class="border-y border-navy-900/5 bg-cream-100 py-12">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <p class="mb-7 text-center text-xs font-bold uppercase tracking-widest text-ink-300">Trusted &amp; certified</p>
+    <p class="mb-7 text-center text-xs font-bold uppercase tracking-widest text-ink-500">Trusted &amp; certified</p>
     <div
       class="marquee-viewport overflow-hidden"
       style="mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);"
@@ -31,16 +31,10 @@ const badges = [
       <div class="flex w-max shrink-0 animate-marquee items-stretch gap-6" data-marquee-track>
         {badges.map((b) => (
           <div class="flex h-24 w-40 shrink-0 items-center justify-center rounded-2xl border border-navy-900/8 bg-white px-5 shadow-soft">
-            <Image src={b.src} alt={b.alt} width={b.w} height={b.h} class="h-16 w-auto max-w-full object-contain" />
+            <Image src={b.src} alt={b.alt} width={b.w} height={b.h} densities={[1, 2, 3]} quality={95} class="h-16 w-auto max-w-full object-contain" />
           </div>
         ))}
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .marquee-viewport:hover [data-marquee-track] {
-    animation-play-state: paused;
-  }
-</style>

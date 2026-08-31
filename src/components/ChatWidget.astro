@@ -21,7 +21,7 @@ const quickReplies = [
     @click="toggle()"
     :aria-expanded="open"
     aria-label="Open site assistant"
-    class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red-600 text-white shadow-lift transition-transform hover:scale-105"
+    class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red-600 text-white shadow-lift ring-4 ring-white transition-transform hover:scale-105"
   >
     <svg x-show="!open" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
       <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" stroke-linejoin="round" />
@@ -38,16 +38,24 @@ const quickReplies = [
     x-transition:enter="transition ease-out duration-200"
     x-transition:enter-start="opacity-0 translate-y-3"
     x-transition:enter-end="opacity-100 translate-y-0"
-    class="absolute bottom-[4.75rem] right-0 flex h-[32rem] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-navy-900/10 bg-white shadow-lift"
+    class="fixed inset-0 flex h-full w-full flex-col overflow-hidden border border-navy-900/10 bg-white shadow-lift sm:absolute sm:inset-auto sm:bottom-[4.75rem] sm:right-0 sm:h-[32rem] sm:w-[22rem] sm:max-w-[calc(100vw-2.5rem)] sm:rounded-2xl"
     role="dialog"
     aria-label="Site assistant"
   >
-    <div class="flex items-center justify-between bg-navy-900 px-4 py-3.5">
+    <div class="flex items-center justify-between bg-navy-900 px-4 py-3.5" style="padding-top: max(0.875rem, env(safe-area-inset-top))">
       <div>
         <p class="font-display text-sm font-bold text-white">Gene Johnson Assistant</p>
         <p class="text-[0.7rem] text-cream-100/60">Searches this site · not a live agent</p>
       </div>
-      <a href={site.phoneHref} class="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-white hover:bg-white/20">Call now</a>
+      <div class="flex items-center gap-1.5">
+        <a href={site.phoneHref} class="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-white hover:bg-white/20">Call now</a>
+        <button type="button" @click="resetChat()" aria-label="Reset chat" title="Reset chat" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white/80 hover:bg-white/10 hover:text-white">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h5M20 20v-5h-5" stroke-linecap="round" stroke-linejoin="round" /><path d="M4.5 9A8 8 0 0 1 19 8M19.5 15A8 8 0 0 1 5 16" stroke-linecap="round" /></svg>
+        </button>
+        <button type="button" @click="toggle()" aria-label="Close chat" title="Close chat" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white/80 hover:bg-white/10 hover:text-white">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" /></svg>
+        </button>
+      </div>
     </div>
 
     <div class="flex-1 space-y-3 overflow-y-auto p-4" x-ref="scrollArea">

@@ -1,0 +1,350 @@
+[
+  {
+    "category": "plumbing",
+    "file": "plumbing-leak-detection.png",
+    "label": "Leak Detection",
+    "concept": "Water droplet containing a wrench, representing leak-detection service"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-emergency-alarm.png",
+    "label": "Emergency Plumbing",
+    "concept": "Green emergency alarm/siren light for urgent plumbing calls"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-pipe-leak.png",
+    "label": "Pipe Leak Repair",
+    "concept": "Leaking pipe joint/coupling with water drops falling from it"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-leak-search.png",
+    "label": "Leak Search",
+    "concept": "Magnifying glass over a water droplet with sound waves, representing acoustic leak detection"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-shutoff-valve.png",
+    "label": "Shutoff Valve",
+    "concept": "Ball valve with green handle and water-drop indicator"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-toilet.png",
+    "label": "Toilet Repair & Install",
+    "concept": "Toilet fixture"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-p-trap.png",
+    "label": "P-Trap",
+    "concept": "U-shaped drain trap pipe with water drops"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-tank-water-heater.png",
+    "label": "Tank Water Heater",
+    "concept": "Cylindrical tank-style water heater with flame icon and temperature gauge"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-tankless-water-heater.png",
+    "label": "Tankless Water Heater",
+    "concept": "Wall-mounted flat tankless water heater unit with flame icon"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-outdoor-spigot.png",
+    "label": "Outdoor Spigot",
+    "concept": "Outdoor hose bib/spigot with dripping water drop"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-garbage-disposal.png",
+    "label": "Garbage Disposal",
+    "concept": "Under-sink garbage disposal unit with green recycle-arrow icon"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-sump-pump.png",
+    "label": "Sump Pump",
+    "concept": "Submersible sump pump with float switch sitting in a water-filled basin"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-water-filtration.png",
+    "label": "Water Filtration",
+    "concept": "Three-canister whole-house water filtration system with faucet spout"
+  },
+  {
+    "category": "plumbing",
+    "file": "plumbing-inspection-checklist.png",
+    "label": "Plumbing Inspection",
+    "concept": "Clipboard checklist with checkmarks and a magnifying glass over a water drop"
+  },
+  {
+    "category": "heating",
+    "file": "heating-flame.png",
+    "label": "Heating",
+    "concept": "Navy and green gas flame icon"
+  },
+  {
+    "category": "heating",
+    "file": "heating-boiler.png",
+    "label": "Boiler",
+    "concept": "Boiler unit with two pipe fittings on top and a flame gauge panel on the front"
+  },
+  {
+    "category": "heating",
+    "file": "heating-water-heater.png",
+    "label": "Water Heater",
+    "concept": "Cylindrical water heater tank with flame icon, dial gauge, and pipe elbow on top"
+  },
+  {
+    "category": "heating",
+    "file": "heating-radiant-floor.png",
+    "label": "Radiant Floor Heating",
+    "concept": "Cutaway of a floor showing a heating coil embedded beneath the surface with heat waves rising"
+  },
+  {
+    "category": "heating",
+    "file": "heating-heat-pump.png",
+    "label": "Heat Pump",
+    "concept": "HVAC unit with a circular axial fan and side vents"
+  },
+  {
+    "category": "heating",
+    "file": "heating-repair.png",
+    "label": "Heating Repair",
+    "concept": "Green flame with a wrench laid across it"
+  },
+  {
+    "category": "heating",
+    "file": "heating-install.png",
+    "label": "Heating Installation",
+    "concept": "HVAC unit with fan and a green plus-sign badge"
+  },
+  {
+    "category": "heating",
+    "file": "heating-maintenance.png",
+    "label": "Heating Maintenance",
+    "concept": "Calendar page with a flame icon and a gear badge"
+  },
+  {
+    "category": "heating",
+    "file": "heating-ductless-mini-split.png",
+    "label": "Ductless Mini-Split",
+    "concept": "Wall-mounted ductless mini-split unit blowing wavy green air"
+  },
+  {
+    "category": "heating",
+    "file": "heating-thermostat.png",
+    "label": "Smart Thermostat",
+    "concept": "Digital thermostat display reading 72 degrees with up/down arrows"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-snowflake.png",
+    "label": "Air Conditioning",
+    "concept": "Green snowflake with cool-air waves beneath it"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-repair.png",
+    "label": "AC Repair",
+    "concept": "AC unit with a wrench laid across the front"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-install.png",
+    "label": "AC Installation",
+    "concept": "AC unit with a green plus-sign badge"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-air-quality.png",
+    "label": "Indoor Air Quality",
+    "concept": "Family silhouette inside a house outline with a green shield-checkmark badge"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-ductless-unit.png",
+    "label": "Ductless Cooling",
+    "concept": "Wall-mounted ductless unit blowing wavy green air"
+  },
+  {
+    "category": "cooling",
+    "file": "cooling-maintenance.png",
+    "label": "AC Maintenance",
+    "concept": "AC unit with a green recycle-arrow badge wrapped around a snowflake"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-lightning-bolt.png",
+    "label": "Electrical",
+    "concept": "Navy lightning bolt with green outline"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-panel.png",
+    "label": "Electrical Panel",
+    "concept": "Open breaker panel door revealing green circuit breaker switches"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-outlet-switch.png",
+    "label": "Outlets & Switches",
+    "concept": "Wall outlet next to a toggle light switch"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-wiring.png",
+    "label": "Wiring",
+    "concept": "Bundle of electrical wires with exposed copper ends fanning out of a conduit elbow"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-safety-inspection.png",
+    "label": "Safety Inspection",
+    "concept": "Clipboard checklist with checkmarks and a magnifying glass"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-pendant-light.png",
+    "label": "Lighting",
+    "concept": "Dome pendant light fixture with a glowing bulb"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-ceiling-fan.png",
+    "label": "Ceiling Fan",
+    "concept": "Three-blade ceiling fan with a center light"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-ev-charger.png",
+    "label": "EV Charger",
+    "concept": "Electric-vehicle charging station with plug handle and lightning-bolt icon"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-surge-protection.png",
+    "label": "Surge Protection",
+    "concept": "Shield with a lightning bolt and an electrical plug beside it"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-generator.png",
+    "label": "Generator",
+    "concept": "Portable backup generator with handle, wheel, and lightning-bolt icon"
+  },
+  {
+    "category": "electrical",
+    "file": "electrical-emergency-alarm.png",
+    "label": "Emergency Electrical",
+    "concept": "Green emergency alarm/siren light with a lightning bolt on the lens"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-p-trap.png",
+    "label": "P-Trap",
+    "concept": "U-shaped drain trap pipe (navy and green sections) with a water drop"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-drain-snake.png",
+    "label": "Drain Snake / Clog Clearing",
+    "concept": "Plumbing snake cable being fed into a drain strainer to clear a clog"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-hydro-jetting.png",
+    "label": "Hydro Jetting",
+    "concept": "Nozzle spraying high-pressure jets of water, representing hydro-jet drain cleaning"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-drain-filter.png",
+    "label": "Drain Filter / Screen",
+    "concept": "Pipe fitting with a mesh screen/filter grate visible inside"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-pipe-repair.png",
+    "label": "Pipe Repair",
+    "concept": "Pipe elbow with a visible crack, with a wrench laid across it"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-trenchless-repair.png",
+    "label": "Trenchless Pipe Repair",
+    "concept": "Underground cutaway showing a trenchless liner being inserted into an existing pipe"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-sewer-camera.png",
+    "label": "Sewer Camera Inspection",
+    "concept": "Video monitor displaying a pipe-interior feed, connected to a camera head on a reel cable"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-sump-pump.png",
+    "label": "Sump Pump",
+    "concept": "Submersible sump pump with float switch sitting in a water-filled basin"
+  },
+  {
+    "category": "drainage",
+    "file": "drainage-repiping.png",
+    "label": "Repiping",
+    "concept": "Bundle of six stacked pipe sections, representing whole-home repiping"
+  },
+  {
+    "category": "trust",
+    "file": "trust-warranty.png",
+    "label": "Warranty",
+    "concept": "Shield badge with a crown and star, plus a wrench and gear, representing workmanship warranty"
+  },
+  {
+    "category": "trust",
+    "file": "trust-24-7.png",
+    "label": "24/7 Availability",
+    "concept": "Clock face reading \"24/7\" wrapped in a green circular arrow"
+  },
+  {
+    "category": "trust",
+    "file": "trust-upfront-pricing.png",
+    "label": "Upfront Pricing",
+    "concept": "Invoice sheet with a dollar sign next to a calculator"
+  },
+  {
+    "category": "trust",
+    "file": "trust-certified.png",
+    "label": "Certified & Awarded",
+    "concept": "Award ribbon medallion with a checkmark"
+  },
+  {
+    "category": "trust",
+    "file": "trust-family-owned.png",
+    "label": "Family Owned",
+    "concept": "House outline containing a family silhouette (parent and two children)"
+  },
+  {
+    "category": "trust",
+    "file": "trust-since-1976.png",
+    "label": "Since 1976",
+    "concept": "Calendar page reading \"1976\""
+  },
+  {
+    "category": "trust",
+    "file": "trust-free-diagnostics.png",
+    "label": "Free Diagnostics",
+    "concept": "Magnifying glass with a heartbeat/pulse line inside, representing diagnostics"
+  },
+  {
+    "category": "trust",
+    "file": "trust-insured.png",
+    "label": "Insured",
+    "concept": "Shield containing a document with a green checkmark badge, representing insurance coverage"
+  }
+]

@@ -1,6 +1,6 @@
 ---
 // Floating accessibility toolbar: text size, contrast, motion, underline
-// links, and a dyslexia-friendly font — all applied via classes/vars on
+// links, and a dyslexia-friendly font - all applied via classes/vars on
 // <html> and persisted in localStorage so they survive navigation and
 // repeat visits without needing any backend.
 ---
@@ -15,7 +15,7 @@
     @click="open = !open"
     :aria-expanded="open"
     aria-label="Accessibility options"
-    class="flex h-14 w-14 items-center justify-center rounded-full bg-navy-900 text-white shadow-lift transition-transform hover:scale-105"
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-navy-900 text-white shadow-lift ring-4 ring-white transition-transform hover:scale-105"
   >
     <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
       <circle cx="12" cy="4.5" r="1.8" fill="currentColor" stroke="none" />
@@ -33,18 +33,19 @@
     x-transition:enter-end="opacity-100 translate-y-0"
     @click.outside="open = false"
     @keydown.escape.window="open = false"
-    class="absolute bottom-[4.5rem] left-0 w-72 rounded-2xl border border-navy-900/10 bg-white p-5 shadow-lift"
+    class="absolute bottom-[4.5rem] left-0 max-h-[75vh] w-80 overflow-y-auto rounded-2xl border border-navy-900/10 bg-white p-5 shadow-lift"
     role="dialog"
     aria-label="Accessibility settings"
   >
     <div class="flex items-center justify-between">
       <h2 class="font-display text-sm font-bold text-navy-900">Accessibility</h2>
-      <button @click="open = false" aria-label="Close accessibility panel" class="text-ink-300 hover:text-navy-900">
+      <button @click="open = false" aria-label="Close accessibility panel" class="text-ink-500 hover:text-navy-900">
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
 
-    <div class="mt-4 space-y-4 text-sm">
+    <p class="mt-4 text-[0.65rem] font-bold uppercase tracking-widest text-ink-500">Text</p>
+    <div class="mt-3 space-y-4 text-sm">
       <div class="flex items-center justify-between">
         <span class="font-medium text-ink-700">Text size</span>
         <div class="flex items-center gap-1.5">
@@ -55,24 +56,68 @@
       </div>
 
       <label class="flex cursor-pointer items-center justify-between">
-        <span class="font-medium text-ink-700">High contrast</span>
-        <input type="checkbox" x-model="contrast" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+        <span class="font-medium text-ink-700">Readable font</span>
+        <input type="checkbox" x-model="readableFont" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Reading spacing</span>
+        <input type="checkbox" x-model="readingSpacing" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
       </label>
 
       <label class="flex cursor-pointer items-center justify-between">
         <span class="font-medium text-ink-700">Underline links</span>
         <input type="checkbox" x-model="underlineLinks" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
       </label>
+    </div>
 
+    <p class="mt-5 text-[0.65rem] font-bold uppercase tracking-widest text-ink-500">Vision</p>
+    <div class="mt-3 space-y-4 text-sm">
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">High contrast</span>
+        <input type="checkbox" x-model="contrast" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Grayscale</span>
+        <input type="checkbox" x-model="grayscale" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Invert colors</span>
+        <input type="checkbox" x-model="invertColors" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Big cursor</span>
+        <input type="checkbox" x-model="bigCursor" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+    </div>
+
+    <p class="mt-5 text-[0.65rem] font-bold uppercase tracking-widest text-ink-500">Interaction</p>
+    <div class="mt-3 space-y-4 text-sm">
       <label class="flex cursor-pointer items-center justify-between">
         <span class="font-medium text-ink-700">Reduce motion</span>
         <input type="checkbox" x-model="reduceMotion" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
       </label>
 
       <label class="flex cursor-pointer items-center justify-between">
-        <span class="font-medium text-ink-700">Readable font</span>
-        <input type="checkbox" x-model="readableFont" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+        <span class="font-medium text-ink-700">Keyboard focus outline</span>
+        <input type="checkbox" x-model="focusOutline" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
       </label>
+
+      <div class="flex items-center justify-between">
+        <span class="font-medium text-ink-700">Read page aloud</span>
+        <button
+          @click="toggleReadAloud()"
+          :aria-pressed="reading"
+          class="flex items-center gap-1.5 rounded-full border border-navy-900/15 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-cream-100"
+        >
+          <svg x-show="!reading" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg x-show="reading" x-cloak class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <span x-text="reading ? 'Stop' : 'Play'"></span>
+        </button>
+      </div>
     </div>
 
     <button @click="resetAll()" class="mt-5 w-full rounded-full border border-navy-900/15 py-2 text-xs font-semibold text-ink-500 hover:bg-cream-100">
@@ -94,6 +139,12 @@
       underlineLinks: false,
       reduceMotion: false,
       readableFont: false,
+      readingSpacing: false,
+      grayscale: false,
+      invertColors: false,
+      bigCursor: false,
+      focusOutline: false,
+      reading: false,
 
       init() {
         try {
@@ -103,8 +154,14 @@
           this.underlineLinks = saved.underlineLinks ?? false;
           this.reduceMotion = saved.reduceMotion ?? false;
           this.readableFont = saved.readableFont ?? false;
+          this.readingSpacing = saved.readingSpacing ?? false;
+          this.grayscale = saved.grayscale ?? false;
+          this.invertColors = saved.invertColors ?? false;
+          this.bigCursor = saved.bigCursor ?? false;
+          this.focusOutline = saved.focusOutline ?? false;
         } catch {}
         this.apply();
+        window.addEventListener("beforeunload", () => window.speechSynthesis?.cancel());
       },
 
       persist() {
@@ -117,6 +174,11 @@
               underlineLinks: this.underlineLinks,
               reduceMotion: this.reduceMotion,
               readableFont: this.readableFont,
+              readingSpacing: this.readingSpacing,
+              grayscale: this.grayscale,
+              invertColors: this.invertColors,
+              bigCursor: this.bigCursor,
+              focusOutline: this.focusOutline,
             })
           );
         } catch {}
@@ -125,10 +187,20 @@
       apply() {
         const root = document.documentElement;
         root.style.setProperty("--a11y-font-scale", String(1 + this.fontStep * 0.1));
+
+        const filters = [];
+        if (this.contrast) filters.push("contrast(1.15)");
+        if (this.grayscale) filters.push("grayscale(1)");
+        if (this.invertColors) filters.push("invert(1) hue-rotate(180deg)");
+        root.style.filter = filters.join(" ");
+
         root.classList.toggle("a11y-contrast", this.contrast);
         root.classList.toggle("a11y-underline-links", this.underlineLinks);
         root.classList.toggle("a11y-reduce-motion", this.reduceMotion);
         root.classList.toggle("a11y-readable-font", this.readableFont);
+        root.classList.toggle("a11y-reading-spacing", this.readingSpacing);
+        root.classList.toggle("a11y-big-cursor", this.bigCursor);
+        root.classList.toggle("a11y-focus-outline", this.focusOutline);
         this.persist();
       },
 
@@ -144,12 +216,43 @@
         this.fontStep = 0;
         this.apply();
       },
+
+      toggleReadAloud() {
+        if (!("speechSynthesis" in window)) return;
+        if (this.reading) {
+          window.speechSynthesis.cancel();
+          this.reading = false;
+          return;
+        }
+        const main = document.querySelector("main") || document.body;
+        const text = (main as HTMLElement).innerText.replace(/\s+/g, " ").trim();
+        if (!text) return;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.onend = () => {
+          this.reading = false;
+        };
+        utterance.onerror = () => {
+          this.reading = false;
+        };
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+        this.reading = true;
+      },
+
       resetAll() {
+        window.speechSynthesis?.cancel();
+        this.reading = false;
         this.fontStep = 0;
         this.contrast = false;
         this.underlineLinks = false;
         this.reduceMotion = false;
         this.readableFont = false;
+        this.readingSpacing = false;
+        this.grayscale = false;
+        this.invertColors = false;
+        this.bigCursor = false;
+        this.focusOutline = false;
         this.apply();
       },
     }));
@@ -180,14 +283,33 @@
     letter-spacing: 0.01em;
   }
 
-  .a11y-contrast {
-    filter: contrast(1.15);
+  .a11y-reading-spacing body,
+  .a11y-reading-spacing p,
+  .a11y-reading-spacing li {
+    line-height: 1.9 !important;
+    letter-spacing: 0.03em !important;
+    word-spacing: 0.08em !important;
   }
+
   .a11y-contrast body {
     background: #fff !important;
     color: #000 !important;
   }
   .a11y-contrast a {
     color: #b8020c !important;
+  }
+
+  .a11y-big-cursor,
+  .a11y-big-cursor * {
+    cursor:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M3 2l7.5 19 2.3-7.7L20 11z' fill='%231c1a4d' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E")
+      4 4,
+      auto !important;
+  }
+
+  .a11y-focus-outline :focus-visible {
+    outline: 3px solid #fd030f !important;
+    outline-offset: 3px !important;
+    border-radius: 2px;
   }
 </style>

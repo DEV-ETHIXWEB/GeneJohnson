@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+import Icon from "./Icon.astro";
 
 export interface Props {
   eyebrow?: string;
@@ -9,7 +10,7 @@ export interface Props {
   icon?: string;
 }
 
-const { eyebrow, title, tagline, breadcrumbs } = Astro.props;
+const { eyebrow, title, tagline, breadcrumbs, icon } = Astro.props;
 ---
 
 <section class="relative overflow-hidden bg-navy-900 py-16 sm:py-20">
@@ -29,12 +30,21 @@ const { eyebrow, title, tagline, breadcrumbs } = Astro.props;
       ))}
     </nav>
 
-    {eyebrow && (
-      <p data-hero-fade class="mb-3 text-sm font-bold uppercase tracking-widest text-brand-red-400">{eyebrow}</p>
-    )}
-    <h1 data-hero-fade class="max-w-3xl text-balance font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-      {title}
-    </h1>
+    <div class="flex items-start gap-5">
+      {icon && (
+        <span data-hero-fade class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 backdrop-blur sm:flex">
+          <Icon name={icon} class="h-9 w-9 text-white" />
+        </span>
+      )}
+      <div>
+        {eyebrow && (
+          <p data-hero-fade class="mb-3 text-sm font-bold uppercase tracking-widest text-brand-red-400">{eyebrow}</p>
+        )}
+        <h1 data-hero-fade class="max-w-3xl text-balance font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+          {title}
+        </h1>
+      </div>
+    </div>
     {tagline && <p data-hero-fade class="mt-4 max-w-2xl text-balance text-lg text-cream-100/80">{tagline}</p>}
 
     <div data-hero-fade class="mt-8 flex flex-wrap items-center gap-4">

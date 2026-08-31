@@ -20,7 +20,7 @@ export const GET: APIRoute = async () => {
   entries.push({
     title: "Home",
     url: "/",
-    excerpt: `${site.name} — family owned and operated since ${site.since}, serving the greater Puget Sound area.`,
+    excerpt: `${site.name} - family owned and operated since ${site.since}, serving the greater Puget Sound area.`,
     keywords: "home about gene johnson family owned since 1976",
   });
 
@@ -63,7 +63,7 @@ export const GET: APIRoute = async () => {
 
   const companyPages = [
     { title: "About Us", url: "/about-us/", excerpt: `Family owned and operated since ${site.since}.`, keywords: "about company history family owned" },
-    { title: "Careers", url: "/about-us/careers/", excerpt: "Join the Gene Johnson team — apprenticeships, licensed trade positions, and office roles.", keywords: "careers jobs hiring apprenticeship employment" },
+    { title: "Careers", url: "/about-us/careers/", excerpt: "Join the Gene Johnson team - apprenticeships, licensed trade positions, and office roles.", keywords: "careers jobs hiring apprenticeship employment" },
     { title: "Financing", url: "/about-us/financing/", excerpt: "Flexible financing including no payments for 12 months on qualifying HVAC installs.", keywords: "financing payment plan no payments 12 months cost" },
     { title: "Reviews", url: "/reviews/", excerpt: "2,400+ five-star reviews from Puget Sound homeowners.", keywords: "reviews testimonials ratings stars feedback" },
     { title: "Coupons & Offers", url: "/coupons/", excerpt: "Current coupons and discounts on plumbing, heating, cooling, and electrical service.", keywords: "coupons discounts offers deals savings promo code" },

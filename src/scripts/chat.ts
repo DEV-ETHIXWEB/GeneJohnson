@@ -13,7 +13,6 @@ interface ChatMessage {
 }
 
 document.addEventListener("alpine:init", () => {
-  // @ts-expect-error - Alpine attaches itself to window at runtime
   window.Alpine.data("gjChat", () => ({
     open: false,
     input: "",
@@ -27,12 +26,7 @@ document.addEventListener("alpine:init", () => {
       const root = this.$root as HTMLElement;
       this.phoneDisplay = root.dataset.phoneDisplay ?? "";
       this.phoneHref = root.dataset.phoneHref ?? "";
-      this.messages = [
-        {
-          role: "bot",
-          html: `Hi! I can help you find the right service page, check our coverage area, or point you to an offer. For anything urgent, call <a href="${this.phoneHref}" class="font-semibold text-brand-red-600">${this.phoneDisplay}</a> directly.`,
-        },
-      ];
+      this.resetChat();
 
       fetch("/api/chat-index.json")
         .then((r) => r.json())
@@ -54,6 +48,17 @@ document.addEventListener("alpine:init", () => {
       this.open = !this.open;
     },
 
+    resetChat() {
+      this.messages = [
+        {
+          role: "bot",
+          html: `Hi! I can help you find the right service page, check our coverage area, or point you to an offer. For anything urgent, call <a href="${this.phoneHref}" class="font-semibold text-brand-red-600">${this.phoneDisplay}</a> directly.`,
+        },
+      ];
+      this.input = "";
+      this.loading = false;
+    },
+
     scrollDown() {
       this.$nextTick(() => {
         const el = this.$refs.scrollArea as HTMLElement | undefined;
@@ -73,13 +78,13 @@ document.addEventListener("alpine:init", () => {
         return `We're available 24/7 for emergencies, and standard appointments run every day. Call <a href="${this.phoneHref}" class="font-semibold text-brand-red-600">${this.phoneDisplay}</a> any time.`;
       }
       if (/(emergency|urgent|burst|flood|no water|no heat|leak)/.test(t)) {
-        return `That sounds urgent — please call us directly at <a href="${this.phoneHref}" class="font-semibold text-brand-red-600">${this.phoneDisplay}</a> rather than waiting on a chat reply. You can also see what counts as an emergency on our <a href="/emergency-plumbing/" class="font-semibold text-brand-red-600">Emergency Plumbing</a> page.`;
+        return `That sounds urgent - please call us directly at <a href="${this.phoneHref}" class="font-semibold text-brand-red-600">${this.phoneDisplay}</a> rather than waiting on a chat reply. You can also see what counts as an emergency on our <a href="/emergency-plumbing/" class="font-semibold text-brand-red-600">Emergency Plumbing</a> page.`;
       }
       if (/(cost|price|pricing|how much|estimate|quote)/.test(t)) {
-        return `Pricing depends on the job — we always give upfront pricing before any work starts, with a free in-home estimate for most projects. Check <a href="/coupons/" class="font-semibold text-brand-red-600">current coupons</a> or <a href="/schedule-now/" class="font-semibold text-brand-red-600">request service</a> to get a real number.`;
+        return `Pricing depends on the job - we always give upfront pricing before any work starts, with a free in-home estimate for most projects. Check <a href="/coupons/" class="font-semibold text-brand-red-600">current coupons</a> or <a href="/schedule-now/" class="font-semibold text-brand-red-600">request service</a> to get a real number.`;
       }
       if (/(area|serve|city|location|zip|near me)/.test(t)) {
-        return `We cover the greater Puget Sound area — Seattle, the Eastside, North Sound, and South Sound. See the full list on our <a href="/service-area/" class="font-semibold text-brand-red-600">Service Area</a> page.`;
+        return `We cover the greater Puget Sound area - Seattle, the Eastside, North Sound, and South Sound. See the full list on our <a href="/service-area/" class="font-semibold text-brand-red-600">Service Area</a> page.`;
       }
       return null;
     },
@@ -113,7 +118,7 @@ document.addEventListener("alpine:init", () => {
             });
           }
         } else {
-          this.messages.push({ role: "bot", html: "Search is still loading — try again in a second, or call us directly." });
+          this.messages.push({ role: "bot", html: "Search is still loading - try again in a second, or call us directly." });
         }
         this.loading = false;
         this.scrollDown();

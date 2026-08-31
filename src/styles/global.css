@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand — sampled directly from the real Gene Johnson logo & icon set:
+  /* Brand - sampled directly from the real Gene Johnson logo & icon set:
      navy #2A2763 and red #FD030F are the two dominant pixel colors. */
   --color-navy-950: #14123a;
   --color-navy-900: #1c1a4d;
@@ -15,7 +15,7 @@
   --color-brand-red-500: #fd030f;
   --color-brand-red-400: #ff4d55;
 
-  /* Accent green — from the client's own icon/brand system (their Figma
+  /* Accent green - from the client's own icon/brand system (their Figma
      "Accent" export), confirmed as a color they like used on the site. Used
      sparingly as a highlight, not as a replacement for the navy/red identity. */
   --color-accent-green-700: #5a9900;
@@ -39,6 +39,7 @@
   --shadow-lift: 0 24px 60px -20px rgba(11, 30, 61, 0.35);
 
   --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee-reverse: marquee 36s linear infinite reverse;
   --animate-float: float 6s ease-in-out infinite;
 }
 
@@ -101,6 +102,13 @@ h1, h2, h3, h4, .font-display {
     linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Shared by any horizontal auto-scrolling row (trust badges, testimonials):
+   hovering the row pauses the scroll so the visitor can actually read
+   whatever they moved toward before it drifts away. */
+.marquee-viewport:hover [data-marquee-track] {
+  animation-play-state: paused;
 }
 
 .text-gradient-red {

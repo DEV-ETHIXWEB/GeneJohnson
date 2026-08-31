@@ -31,7 +31,7 @@ const { title, description, path, image, noindex, schema = [] } = Astro.props;
     <meta name="theme-color" content="#2a2763" />
     <!--
       Alpine.js evaluates x-data/x-show/@click expressions from HTML attributes
-      via `new Function()`, which requires 'unsafe-eval' — without it Alpine
+      via `new Function()`, which requires 'unsafe-eval' - without it Alpine
       (mega-menu, mobile nav, both widgets) silently fails everywhere. Moving
       off 'unsafe-eval' would mean switching to Alpine's restricted CSP build
       (@alpinejs/csp) and rewriting the dynamically-built directives in
@@ -63,7 +63,7 @@ const { title, description, path, image, noindex, schema = [] } = Astro.props;
       "alpine:init" event that AccessibilityWidget/ChatWidget listen for to
       register their Alpine.data() components. Deferred module scripts run in
       document order, so this must load AFTER those components' own <script>
-      tags above (which attach the alpine:init listeners) — moving it back to
+      tags above (which attach the alpine:init listeners) - moving it back to
       <head> silently breaks both widgets (Alpine.start() would fire, and thus
       alpine:init, before anything is listening).
     -->

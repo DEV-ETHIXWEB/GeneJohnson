@@ -4,6 +4,7 @@ import PageHero from "../PageHero.astro";
 import CTASection from "../CTASection.astro";
 import Testimonials from "../home/Testimonials.astro";
 import Icon from "../Icon.astro";
+import IconShowcase from "../IconShowcase.astro";
 import { site } from "../../data/site";
 import type { Vertical } from "../../data/services";
 import { serviceSchema, breadcrumbSchema } from "../../lib/schema";
@@ -14,6 +15,30 @@ export interface Props {
 
 const { vertical } = Astro.props;
 const path = `/${vertical.slug}/`;
+
+const showcaseCopy: Record<Vertical["slug"], { categories: string[]; title: string; subtitle: string }> = {
+  plumbing: {
+    categories: ["plumbing", "drainage"],
+    title: "Every plumbing and drain problem, covered",
+    subtitle: "From a single dripping faucet to a full sewer line replacement, this is the range of plumbing and drain work our licensed team handles.",
+  },
+  heating: {
+    categories: ["heating"],
+    title: "Every heating system, installed and serviced right",
+    subtitle: "Furnaces, boilers, heat pumps, and radiant systems - one team that services every major heating technology in Puget Sound homes.",
+  },
+  cooling: {
+    categories: ["cooling"],
+    title: "Every way we keep your home cool",
+    subtitle: "From full AC installs to ductless systems and indoor air quality, here's the full range of cooling solutions we install and service.",
+  },
+  electrical: {
+    categories: ["electrical"],
+    title: "Every electrical system, made safe and modern",
+    subtitle: "Panels, wiring, lighting, EV chargers, and backup power - our licensed electricians handle every part of your home's electrical system.",
+  },
+};
+const showcase = showcaseCopy[vertical.slug];
 ---
 
 <BaseLayout
@@ -32,6 +57,7 @@ const path = `/${vertical.slug}/`;
     eyebrow={vertical.title}
     title={vertical.tagline}
     tagline={vertical.intro}
+    icon={vertical.icon}
     breadcrumbs={[{ name: "Home", href: "/" }, { name: vertical.title }]}
   />
 
@@ -40,8 +66,8 @@ const path = `/${vertical.slug}/`;
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-animate-group>
       {vertical.subservices.map((s) => (
         <a href={`/${s.slug}/`} data-animate-item class="group flex items-center gap-4 rounded-2xl border border-navy-900/10 bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
-          <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-navy-900">
-            <Icon name={s.icon} class="h-12 w-12 text-navy-700 transition-colors duration-300 group-hover:text-accent-green-400" />
+          <span class="flex h-24 w-24 shrink-0 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-navy-900">
+            <Icon name={s.icon} class="h-14 w-14 text-navy-700 transition-colors duration-300 group-hover:text-accent-green-400" />
           </span>
           <span class="font-semibold text-navy-900">{s.title}</span>
           <svg class="ml-auto h-4 w-4 text-ink-300 transition-transform group-hover:translate-x-1 group-hover:text-brand-red-600" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -49,6 +75,8 @@ const path = `/${vertical.slug}/`;
       ))}
     </div>
   </section>
+
+  <IconShowcase categories={showcase.categories} title={showcase.title} subtitle={showcase.subtitle} />
 
   <Testimonials />
   <CTASection />

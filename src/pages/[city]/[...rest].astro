@@ -47,7 +47,19 @@ function resolveServicePage() {
   return null;
 }
 const svc = resolveServicePage();
-const vertical = svc ? verticalBySlug.get(svc.vertical)! : verticalBySlug.get(service as any);
+
+// `service` is the raw URL segment (e.g. "air-conditioning"), which isn't
+// always the same as the vertical's own slug ("cooling") - map it properly
+// instead of looking it up directly in verticalBySlug, which silently
+// returns undefined for "air-conditioning" and produced "/undefined/" links.
+const SERVICE_TO_VERTICAL: Record<string, "plumbing" | "heating" | "cooling" | "electrical"> = {
+  plumbing: "plumbing",
+  heating: "heating",
+  "air-conditioning": "cooling",
+  cooling: "cooling",
+  electrical: "electrical",
+};
+const vertical = svc ? verticalBySlug.get(svc.vertical)! : verticalBySlug.get(SERVICE_TO_VERTICAL[service]);
 
 const displayName = subserviceName ? `${serviceName} ${subserviceName}` : serviceName;
 const title = `${displayName} in ${cityName}, WA`;
@@ -85,6 +97,7 @@ const related = vertical
     eyebrow={`${cityName}, WA · ${location.county}`}
     title={title}
     tagline={localIntro}
+    icon={svc?.icon ?? vertical?.icon}
     breadcrumbs={[{ name: "Home", href: "/" }, { name: cityName, href: `/${city}/` }, { name: displayName }]}
   />
 

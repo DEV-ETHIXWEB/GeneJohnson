@@ -14,9 +14,10 @@ export interface Props {
   breadcrumbs: { name: string; href?: string }[];
   hideCta?: boolean;
   schema?: (object | null)[];
+  icon?: string;
 }
 
-const { title, description, path, eyebrow, tagline, breadcrumbs, hideCta = false, schema = [] } = Astro.props;
+const { title, description, path, eyebrow, tagline, breadcrumbs, hideCta = false, schema = [], icon } = Astro.props;
 ---
 
 <BaseLayout
@@ -25,7 +26,7 @@ const { title, description, path, eyebrow, tagline, breadcrumbs, hideCta = false
   path={path}
   schema={[breadcrumbSchema(breadcrumbs.map((b) => ({ name: b.name, url: b.href ? `${site.url}${b.href}` : `${site.url}${path}` }))), ...schema]}
 >
-  <PageHero eyebrow={eyebrow} title={title} tagline={tagline} breadcrumbs={breadcrumbs} />
+  <PageHero eyebrow={eyebrow} title={title} tagline={tagline} breadcrumbs={breadcrumbs} icon={icon} />
   <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="prose-content" data-animate>
       <slot />

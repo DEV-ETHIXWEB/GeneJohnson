@@ -11,9 +11,10 @@ import fleet from "../../assets/images/team-fleet/fleet-vans.webp";
   path="/about-us/"
   eyebrow="About Us"
   tagline="Half a century of keeping Puget Sound homes comfortable, safe, and dry."
+  icon="Since 1976"
   breadcrumbs={[{ name: "Home", href: "/" }, { name: "About Us" }]}
 >
-  <Image src={fleet} alt="Gene Johnson service fleet" width={900} height={500} class="mb-8 w-full rounded-2xl object-cover" />
+  <Image src={fleet} alt="Gene Johnson service fleet" width={900} height={500} densities={[1, 2]} quality={88} class="mb-8 w-full rounded-2xl object-cover" />
 
   <p>
     Gene Johnson started as a single-truck plumbing outfit in {site.since}, built on a simple idea: show up on time, explain the problem honestly, and fix it right the first time. Nearly fifty years later, that's still the standard every technician is held to - we've just added heating, cooling, and electrical service along the way as homeowners asked for a company they could call for everything.

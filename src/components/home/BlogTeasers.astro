@@ -21,7 +21,7 @@ const posts = (await getCollection("blog"))
     {posts.map((post) => (
       <a href={`/video-blog/${post.id}/`} data-animate-item class="group overflow-hidden rounded-3xl border border-navy-900/5 bg-white shadow-soft transition-shadow hover:shadow-lift">
         <div class="aspect-[16/10] overflow-hidden">
-          <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={480} height={300} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={480} height={300} densities={[1, 2]} quality={88} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         </div>
         <div class="p-6">
           <p class="text-xs font-bold uppercase tracking-wide text-brand-red-600">{post.data.vertical}</p>

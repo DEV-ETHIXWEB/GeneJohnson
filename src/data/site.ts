@@ -36,7 +36,7 @@ export const site = {
   },
 } as const;
 
-// Build-time only — set PUBLIC_FORM_ENDPOINT in .env before deploying (see
+// Build-time only - set PUBLIC_FORM_ENDPOINT in .env before deploying (see
 // .env.example). Falls back to a non-functional placeholder so it's obvious
 // in the rendered HTML if the real endpoint was never configured.
 export const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "https://formspree.io/f/your-form-id";

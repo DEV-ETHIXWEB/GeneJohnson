@@ -19,6 +19,14 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const path = `/video-blog/${post.id}/`;
+
+const verticalIcon: Record<string, string> = {
+  plumbing: "Plumbing",
+  heating: "Heating",
+  cooling: "AC",
+  electrical: "Electrical",
+  company: "Family Owned",
+};
 ---
 
 <BaseLayout
@@ -37,11 +45,12 @@ const path = `/video-blog/${post.id}/`;
     eyebrow={post.data.vertical}
     title={post.data.title}
     tagline={post.data.description}
+    icon={verticalIcon[post.data.vertical]}
     breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/video-blog/" }, { name: post.data.title }]}
   />
 
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-    <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={900} height={520} class="mb-10 w-full rounded-2xl object-cover" data-animate />
+    <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={900} height={520} densities={[1, 2]} quality={88} class="mb-10 w-full rounded-2xl object-cover" data-animate />
     <div class="prose-content" data-animate>
       <Content />
     </div>
