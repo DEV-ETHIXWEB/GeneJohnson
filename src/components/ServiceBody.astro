@@ -2,9 +2,10 @@
 import { Image } from "astro:assets";
 import { getImage } from "../lib/images";
 import Icon from "./Icon.astro";
+import { site } from "../data/site";
 
 export interface Props {
-  intro: string;
+  intro: string[];
   highlights: string[];
   faqs?: { q: string; a: string }[];
   image: string;
@@ -13,15 +14,35 @@ export interface Props {
 }
 
 const { intro, highlights, faqs = [], image, icon, related } = Astro.props;
+
+// Varied phrasing so the repeated phone link under each paragraph reads as
+// a natural nudge rather than the same CTA copy-pasted four times in a row.
+const phoneCtas = [
+  "Questions? Call",
+  "Ready to schedule? Call",
+  "Need it handled today? Call",
+  "Talk to a real person - call",
+];
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-  <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+  <div class="grid gap-12 lg:grid-cols-2">
     <div data-animate>
       <span class="flex h-28 w-28 items-center justify-center rounded-2xl bg-cream-100">
         <Icon name={icon} class="h-[4.5rem] w-[4.5rem] text-navy-700" />
       </span>
-      <p class="mt-6 text-lg leading-relaxed text-ink-700">{intro}</p>
+
+      <div class="mt-6 space-y-6">
+        {intro.map((paragraph, i) => (
+          <div>
+            <p class="text-lg leading-relaxed text-ink-700">{paragraph}</p>
+            <a href={site.phoneHref} class="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-500 transition-colors hover:text-brand-red-600">
+              <svg class="h-3.5 w-3.5 text-brand-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {phoneCtas[i % phoneCtas.length]} {site.phoneDisplay}
+            </a>
+          </div>
+        ))}
+      </div>
 
       <ul class="mt-8 space-y-3" data-animate-group>
         {highlights.map((h) => (
@@ -33,8 +54,36 @@ const { intro, highlights, faqs = [], image, icon, related } = Astro.props;
       </ul>
     </div>
 
-    <div data-animate class="overflow-hidden rounded-[2rem] shadow-lift">
-      <Image src={getImage(image)} alt={intro.slice(0, 60)} width={640} height={480} densities={[1, 2]} quality={88} class="h-full w-full object-cover" />
+    <div>
+      <div class="lg:sticky lg:top-28">
+        <div data-animate>
+          <div class="overflow-hidden rounded-[2rem] shadow-lift">
+            <Image src={getImage(image)} alt={intro[0].slice(0, 60)} width={640} height={480} densities={[1, 2]} quality={88} class="h-full w-full object-cover" />
+          </div>
+
+          <a
+            href={site.phoneHref}
+            data-magnetic
+            class="group relative mt-5 flex items-center gap-4 overflow-hidden rounded-2xl bg-brand-red-600 p-5 shadow-lift transition-transform hover:scale-[1.015]"
+          >
+            <div class="bg-grid pointer-events-none absolute inset-0 opacity-10"></div>
+            <span class="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span class="relative flex flex-1 flex-col">
+              <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-white/80">
+                <span class="relative flex h-1.5 w-1.5">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                  <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                </span>
+                Call now - 24/7 emergency service
+              </span>
+              <span class="font-display text-2xl font-extrabold text-white">{site.phoneDisplay}</span>
+            </span>
+            <svg class="relative h-5 w-5 shrink-0 text-white/70 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 

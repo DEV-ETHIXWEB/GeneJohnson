@@ -37,7 +37,7 @@ export const GET: APIRoute = async () => {
     entries.push({
       title: p.title,
       url: `/${p.slug}/`,
-      excerpt: p.tagline + " " + p.intro,
+      excerpt: p.tagline + " " + p.intro.join(" "),
       keywords: `${p.title} ${p.vertical} ${p.faqs.map((f) => f.q).join(" ")}`,
     });
   }

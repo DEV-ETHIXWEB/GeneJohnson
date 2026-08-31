@@ -26,7 +26,7 @@ const path = `/${page.slug}/`;
   description={page.tagline}
   path={path}
   schema={[
-    serviceSchema({ name: page.title, description: page.intro, url: `${site.url}${path}` }),
+    serviceSchema({ name: page.title, description: page.intro.join(" "), url: `${site.url}${path}` }),
     breadcrumbSchema([
       { name: "Home", url: site.url },
       { name: vertical.title, url: `${site.url}/${vertical.slug}/` },

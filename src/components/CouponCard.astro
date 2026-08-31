@@ -36,11 +36,11 @@ const notch = notchColor ?? (dark ? "#1c1a4d" : "#f4f5f9");
     <span class="text-[0.6rem] font-bold uppercase tracking-widest text-white/60">Gene Johnson</span>
 
     <span
-      class="notch pointer-events-none absolute -right-3 -top-3 h-6 w-6 rounded-full"
+      class:list={["notch pointer-events-none absolute -right-3 -top-3 h-6 w-6 rounded-full border-2 border-dashed", dark ? "border-white/25" : "border-navy-900/20"]}
       style={{ background: notch }}
     ></span>
     <span
-      class="notch pointer-events-none absolute -bottom-3 -right-3 h-6 w-6 rounded-full"
+      class:list={["notch pointer-events-none absolute -bottom-3 -right-3 h-6 w-6 rounded-full border-2 border-dashed", dark ? "border-white/25" : "border-navy-900/20"]}
       style={{ background: notch }}
     ></span>
   </div>
