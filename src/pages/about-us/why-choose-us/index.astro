@@ -1,0 +1,37 @@
+---
+import SimplePage from "../../../components/SimplePage.astro";
+---
+
+<SimplePage
+  title="Why Choose Gene Johnson"
+  description="Family owned since 1976, upfront pricing, and a fix-it-right guarantee - here's what actually sets Gene Johnson apart from a typical home services company."
+  path="/about-us/why-choose-us/"
+  eyebrow="Why Choose Us"
+  tagline="Anyone can promise good service. Here's what we actually do differently."
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "About Us", href: "/about-us/" }, { name: "Why Choose Us" }]}
+>
+  <h2>We show you the price before we start</h2>
+  <p>
+    You'll always see the price for a job before any work begins - not an hourly rate that leaves the total a mystery until the invoice. If a repair reveals something unexpected, we stop and get your approval before continuing.
+  </p>
+
+  <h2>We explain, not just fix</h2>
+  <p>
+    Every technician is trained to explain what's actually wrong, what your options are, and why we're recommending a specific fix - including when the honest answer is "this doesn't need replacing yet."
+  </p>
+
+  <h2>One company for every trade</h2>
+  <p>
+    Plumbing, heating, cooling, and electrical issues often overlap. Having all four under one company means no finger-pointing between separate contractors and one point of accountability for the whole job.
+  </p>
+
+  <h2>We back our work</h2>
+  <p>
+    If something isn't fixed right, we come back and make it right - that's the standard behind our "we fix it or you don't pay" guarantee. It's not a slogan; it's how every service call is actually structured.
+  </p>
+
+  <h2>Still local, still family owned</h2>
+  <p>
+    Since {new Date().getFullYear() - 1976} years in the Puget Sound area, under the same family ownership. That continuity is why customers who called us in the 1980s are still calling us today.
+  </p>
+</SimplePage>

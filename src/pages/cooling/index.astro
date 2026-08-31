@@ -1,0 +1,8 @@
+---
+import VerticalHub from "../../components/verticals/VerticalHub.astro";
+import { verticalBySlug } from "../../data/services";
+
+const vertical = verticalBySlug.get("cooling")!;
+---
+
+<VerticalHub vertical={vertical} />

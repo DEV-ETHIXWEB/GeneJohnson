@@ -1,0 +1,1650 @@
+[
+  {
+    "url": "/",
+    "template": "home",
+    "params": {}
+  },
+  {
+    "url": "/medina/",
+    "template": "city-hub",
+    "params": {
+      "city": "medina",
+      "cityName": "Medina"
+    }
+  },
+  {
+    "url": "/south-hill/",
+    "template": "city-hub",
+    "params": {
+      "city": "south-hill",
+      "cityName": "South Hill"
+    }
+  },
+  {
+    "url": "/south-tacoma/",
+    "template": "city-hub",
+    "params": {
+      "city": "south-tacoma",
+      "cityName": "South Tacoma"
+    }
+  },
+  {
+    "url": "/haller-lake/",
+    "template": "city-hub",
+    "params": {
+      "city": "haller-lake",
+      "cityName": "Haller Lake"
+    }
+  },
+  {
+    "url": "/northgate/",
+    "template": "city-hub",
+    "params": {
+      "city": "northgate",
+      "cityName": "Northgate"
+    }
+  },
+  {
+    "url": "/central-district/",
+    "template": "city-hub",
+    "params": {
+      "city": "central-district",
+      "cityName": "Central District"
+    }
+  },
+  {
+    "url": "/leschi/",
+    "template": "city-hub",
+    "params": {
+      "city": "leschi",
+      "cityName": "Leschi"
+    }
+  },
+  {
+    "url": "/mount-baker/",
+    "template": "city-hub",
+    "params": {
+      "city": "mount-baker",
+      "cityName": "Mount Baker"
+    }
+  },
+  {
+    "url": "/lake-forest-park/",
+    "template": "city-hub",
+    "params": {
+      "city": "lake-forest-park",
+      "cityName": "Lake Forest Park"
+    }
+  },
+  {
+    "url": "/university-district/",
+    "template": "city-hub",
+    "params": {
+      "city": "university-district",
+      "cityName": "University District"
+    }
+  },
+  {
+    "url": "/ravenna/",
+    "template": "city-hub",
+    "params": {
+      "city": "ravenna",
+      "cityName": "Ravenna"
+    }
+  },
+  {
+    "url": "/bitter-lake/",
+    "template": "city-hub",
+    "params": {
+      "city": "bitter-lake",
+      "cityName": "Bitter Lake"
+    }
+  },
+  {
+    "url": "/sand-point/",
+    "template": "city-hub",
+    "params": {
+      "city": "sand-point",
+      "cityName": "Sand Point"
+    }
+  },
+  {
+    "url": "/west-seattle/",
+    "template": "city-hub",
+    "params": {
+      "city": "west-seattle",
+      "cityName": "West Seattle"
+    }
+  },
+  {
+    "url": "/puyallup/",
+    "template": "city-hub",
+    "params": {
+      "city": "puyallup",
+      "cityName": "Puyallup"
+    }
+  },
+  {
+    "url": "/tacoma/",
+    "template": "city-hub",
+    "params": {
+      "city": "tacoma",
+      "cityName": "Tacoma"
+    }
+  },
+  {
+    "url": "/thermostats/",
+    "template": "standalone",
+    "params": {
+      "slug": "thermostats",
+      "title": "Thermostats"
+    }
+  },
+  {
+    "url": "/products/",
+    "template": "product-page",
+    "params": {
+      "slug": null,
+      "brand": null
+    }
+  },
+  {
+    "url": "/products/mitsubishi/",
+    "template": "product-page",
+    "params": {
+      "slug": "mitsubishi",
+      "brand": "Mitsubishi"
+    }
+  },
+  {
+    "url": "/products/american-standard/",
+    "template": "product-page",
+    "params": {
+      "slug": "american-standard",
+      "brand": "American Standard"
+    }
+  },
+  {
+    "url": "/products/bosch/",
+    "template": "product-page",
+    "params": {
+      "slug": "bosch",
+      "brand": "Bosch"
+    }
+  },
+  {
+    "url": "/everett/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/everett/",
+    "template": "city-hub",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett"
+    }
+  },
+  {
+    "url": "/products/daikin/",
+    "template": "product-page",
+    "params": {
+      "slug": "daikin",
+      "brand": "Daikin"
+    }
+  },
+  {
+    "url": "/everett/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/everett/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/everett/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/mercer-island/",
+    "template": "city-hub",
+    "params": {
+      "city": "mercer-island",
+      "cityName": "Mercer Island"
+    }
+  },
+  {
+    "url": "/everett/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "everett",
+      "cityName": "Everett",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/kirkland/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/kirkland/",
+    "template": "city-hub",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland"
+    }
+  },
+  {
+    "url": "/mercer-island/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "mercer-island",
+      "cityName": "Mercer Island",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/mercer-island/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "mercer-island",
+      "cityName": "Mercer Island",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/kirkland/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/kirkland/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/kirkland/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/shoreline/",
+    "template": "city-hub",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline"
+    }
+  },
+  {
+    "url": "/kirkland/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/shoreline/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/shoreline/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/shoreline/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/shoreline/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/shoreline/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/edmonds/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/edmonds/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/edmonds/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/edmonds/",
+    "template": "city-hub",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds"
+    }
+  },
+  {
+    "url": "/edmonds/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/bellevue/",
+    "template": "city-hub",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue"
+    }
+  },
+  {
+    "url": "/renton/",
+    "template": "city-hub",
+    "params": {
+      "city": "renton",
+      "cityName": "Renton"
+    }
+  },
+  {
+    "url": "/renton/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "renton",
+      "cityName": "Renton",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/edmonds/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/renton/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "renton",
+      "cityName": "Renton",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/bellevue/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/bellevue/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/bellevue/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/bellevue/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/bothell/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/bothell/air-conditioning/installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/bothell/air-conditioning/maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/bothell/",
+    "template": "city-hub",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell"
+    }
+  },
+  {
+    "url": "/bellevue/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/mountlake-terrace/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "mountlake-terrace",
+      "cityName": "Mountlake Terrace",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/bothell/air-conditioning/repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/mountlake-terrace/",
+    "template": "city-hub",
+    "params": {
+      "city": "mountlake-terrace",
+      "cityName": "Mountlake Terrace"
+    }
+  },
+  {
+    "url": "/bothell/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "bothell",
+      "cityName": "Bothell",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/mukilteo/",
+    "template": "city-hub",
+    "params": {
+      "city": "mukilteo",
+      "cityName": "Mukilteo"
+    }
+  },
+  {
+    "url": "/mukilteo/air-conditioning-repair/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "mukilteo",
+      "cityName": "Mukilteo",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "repair",
+      "subserviceName": "Repair"
+    }
+  },
+  {
+    "url": "/mukilteo/air-conditioning-maintenance/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "mukilteo",
+      "cityName": "Mukilteo",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "maintenance",
+      "subserviceName": "Maintenance"
+    }
+  },
+  {
+    "url": "/mukilteo/air-conditioning-installation/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "mukilteo",
+      "cityName": "Mukilteo",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": "installation",
+      "subserviceName": "Installation"
+    }
+  },
+  {
+    "url": "/mountlake-terrace/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "mountlake-terrace",
+      "cityName": "Mountlake Terrace",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/lynnwood/air-conditioning/",
+    "template": "city-service",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "service": "air-conditioning",
+      "serviceName": "Cooling",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/lynnwood/plumbing/",
+    "template": "city-service",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "service": "plumbing",
+      "serviceName": "Plumbing",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/lynnwood/electrical/",
+    "template": "city-service",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "service": "electrical",
+      "serviceName": "Electrical",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/eastmont/",
+    "template": "city-hub",
+    "params": {
+      "city": "eastmont",
+      "cityName": "Eastmont"
+    }
+  },
+  {
+    "url": "/eastmont/plumbing/tankless-water-heaters/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "eastmont",
+      "cityName": "Eastmont",
+      "service": "plumbing",
+      "serviceName": "Plumbing",
+      "subservice": "tankless-water-heaters",
+      "subserviceName": "Tankless Water Heaters"
+    }
+  },
+  {
+    "url": "/lynnwood/leak-detection/",
+    "template": "city-service",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "service": "leak-detection",
+      "serviceName": "Leak Detection",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/welcome-taylor-heating-ac/",
+    "template": "standalone",
+    "params": {
+      "slug": "welcome-taylor-heating-ac",
+      "title": "Welcome Taylor Heating Ac"
+    }
+  },
+  {
+    "url": "/welcome-fox-plumbing-heating/",
+    "template": "standalone",
+    "params": {
+      "slug": "welcome-fox-plumbing-heating",
+      "title": "Welcome Fox Plumbing Heating"
+    }
+  },
+  {
+    "url": "/water-softeners/",
+    "template": "standalone",
+    "params": {
+      "slug": "water-softeners",
+      "title": "Water Softeners"
+    }
+  },
+  {
+    "url": "/switches-outlets-dimmers/",
+    "template": "standalone",
+    "params": {
+      "slug": "switches-outlets-dimmers",
+      "title": "Switches Outlets Dimmers"
+    }
+  },
+  {
+    "url": "/whole-home-automatic-standby-generators/",
+    "template": "standalone",
+    "params": {
+      "slug": "whole-home-automatic-standby-generators",
+      "title": "Whole Home Automatic Standby Generators"
+    }
+  },
+  {
+    "url": "/interior-specialty-lighting/recessed/",
+    "template": "standalone",
+    "params": {
+      "slug": "interior-specialty-lighting/recessed",
+      "title": "Recessed"
+    }
+  },
+  {
+    "url": "/switches-outlets-dimmers/child-proof-outlet/",
+    "template": "standalone",
+    "params": {
+      "slug": "switches-outlets-dimmers/child-proof-outlet",
+      "title": "Child Proof Outlet"
+    }
+  },
+  {
+    "url": "/interior-specialty-lighting/",
+    "template": "standalone",
+    "params": {
+      "slug": "interior-specialty-lighting",
+      "title": "Interior Specialty Lighting"
+    }
+  },
+  {
+    "url": "/panel-replacements-upgrades/",
+    "template": "standalone",
+    "params": {
+      "slug": "panel-replacements-upgrades",
+      "title": "Panel Replacements Upgrades"
+    }
+  },
+  {
+    "url": "/surge-protection/",
+    "template": "standalone",
+    "params": {
+      "slug": "surge-protection",
+      "title": "Surge Protection"
+    }
+  },
+  {
+    "url": "/electrical-safety-inspections/",
+    "template": "standalone",
+    "params": {
+      "slug": "electrical-safety-inspections",
+      "title": "Electrical Safety Inspections"
+    }
+  },
+  {
+    "url": "/electrical-wiring-rewiring/",
+    "template": "standalone",
+    "params": {
+      "slug": "electrical-wiring-rewiring",
+      "title": "Electrical Wiring Rewiring"
+    }
+  },
+  {
+    "url": "/accessibility/",
+    "template": "standalone",
+    "params": {
+      "slug": "accessibility",
+      "title": "Accessibility"
+    }
+  },
+  {
+    "url": "/touch-free-service/",
+    "template": "standalone",
+    "params": {
+      "slug": "touch-free-service",
+      "title": "Touch Free Service"
+    }
+  },
+  {
+    "url": "/schedule-now/",
+    "template": "standalone",
+    "params": {
+      "slug": "schedule-now",
+      "title": "Schedule Now"
+    }
+  },
+  {
+    "url": "/water-leak-detection/",
+    "template": "standalone",
+    "params": {
+      "slug": "water-leak-detection",
+      "title": "Water Leak Detection"
+    }
+  },
+  {
+    "url": "/video-blog/",
+    "template": "standalone",
+    "params": {
+      "slug": "video-blog",
+      "title": "Video Blog"
+    }
+  },
+  {
+    "url": "/tankless-water-heaters/",
+    "template": "standalone",
+    "params": {
+      "slug": "tankless-water-heaters",
+      "title": "Tankless Water Heaters"
+    }
+  },
+  {
+    "url": "/uv-air-sanitizers/",
+    "template": "standalone",
+    "params": {
+      "slug": "uv-air-sanitizers",
+      "title": "Uv Air Sanitizers"
+    }
+  },
+  {
+    "url": "/repiping/",
+    "template": "standalone",
+    "params": {
+      "slug": "repiping",
+      "title": "Repiping"
+    }
+  },
+  {
+    "url": "/showers-tubs/",
+    "template": "standalone",
+    "params": {
+      "slug": "showers-tubs",
+      "title": "Showers Tubs"
+    }
+  },
+  {
+    "url": "/slab-leak-repair/",
+    "template": "standalone",
+    "params": {
+      "slug": "slab-leak-repair",
+      "title": "Slab Leak Repair"
+    }
+  },
+  {
+    "url": "/heater-installation-and-replacement/",
+    "template": "standalone",
+    "params": {
+      "slug": "heater-installation-and-replacement",
+      "title": "Heater Installation And Replacement"
+    }
+  },
+  {
+    "url": "/heater-repair-and-maintenance/",
+    "template": "standalone",
+    "params": {
+      "slug": "heater-repair-and-maintenance",
+      "title": "Heater Repair And Maintenance"
+    }
+  },
+  {
+    "url": "/heating/",
+    "template": "standalone",
+    "params": {
+      "slug": "heating",
+      "title": "Heating"
+    }
+  },
+  {
+    "url": "/furnace-installation-and-replacement/",
+    "template": "standalone",
+    "params": {
+      "slug": "furnace-installation-and-replacement",
+      "title": "Furnace Installation And Replacement"
+    }
+  },
+  {
+    "url": "/furnace-repair-and-maintenance/",
+    "template": "standalone",
+    "params": {
+      "slug": "furnace-repair-and-maintenance",
+      "title": "Furnace Repair And Maintenance"
+    }
+  },
+  {
+    "url": "/heat-pump-services/",
+    "template": "standalone",
+    "params": {
+      "slug": "heat-pump-services",
+      "title": "Heat Pump Services"
+    }
+  },
+  {
+    "url": "/cooling/",
+    "template": "standalone",
+    "params": {
+      "slug": "cooling",
+      "title": "Cooling"
+    }
+  },
+  {
+    "url": "/faucets-fixtures-sinks/",
+    "template": "standalone",
+    "params": {
+      "slug": "faucets-fixtures-sinks",
+      "title": "Faucets Fixtures Sinks"
+    }
+  },
+  {
+    "url": "/cooling/ac-maintenance/",
+    "template": "standalone",
+    "params": {
+      "slug": "cooling/ac-maintenance",
+      "title": "Ac Maintenance"
+    }
+  },
+  {
+    "url": "/cooling/ac-installation/",
+    "template": "standalone",
+    "params": {
+      "slug": "cooling/ac-installation",
+      "title": "Ac Installation"
+    }
+  },
+  {
+    "url": "/cooling/ductless-mini-split-heat-pumps/",
+    "template": "standalone",
+    "params": {
+      "slug": "cooling/ductless-mini-split-heat-pumps",
+      "title": "Ductless Mini Split Heat Pumps"
+    }
+  },
+  {
+    "url": "/air-quality/",
+    "template": "standalone",
+    "params": {
+      "slug": "air-quality",
+      "title": "Air Quality"
+    }
+  },
+  {
+    "url": "/about-us/community/",
+    "template": "about-page",
+    "params": {
+      "slug": "community"
+    }
+  },
+  {
+    "url": "/about-us/",
+    "template": "about-page",
+    "params": {
+      "slug": "index"
+    }
+  },
+  {
+    "url": "/about-us/careers/",
+    "template": "about-page",
+    "params": {
+      "slug": "careers"
+    }
+  },
+  {
+    "url": "/about-us/financing/",
+    "template": "about-page",
+    "params": {
+      "slug": "financing"
+    }
+  },
+  {
+    "url": "/about-us/community/warm-hearts/",
+    "template": "about-page",
+    "params": {
+      "slug": "community/warm-hearts"
+    }
+  },
+  {
+    "url": "/about-us/why-choose-us/",
+    "template": "about-page",
+    "params": {
+      "slug": "why-choose-us"
+    }
+  },
+  {
+    "url": "/service-area/",
+    "template": "service-area-index",
+    "params": {}
+  },
+  {
+    "url": "/service-area/shoreline-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "shoreline-plumbing",
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/seattle-wa/",
+    "template": "city-hub",
+    "params": {
+      "city": "seattle-wa",
+      "cityName": "Seattle Wa"
+    }
+  },
+  {
+    "url": "/service-area/mountlake-terrace-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "mountlake-terrace-plumbing",
+      "city": "mountlake-terrace",
+      "cityName": "Mountlake Terrace",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/renton-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "renton-heating-and-cooling",
+      "city": "renton",
+      "cityName": "Renton",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/renton-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "renton-plumbing",
+      "city": "renton",
+      "cityName": "Renton",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/shoreline-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "shoreline-heating-and-cooling",
+      "city": "shoreline",
+      "cityName": "Shoreline",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/lynnwood-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "lynnwood-plumbing",
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/mercer-island-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "mercer-island-heating-and-cooling",
+      "city": "mercer-island",
+      "cityName": "Mercer Island",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/mercer-island-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "mercer-island-plumbing",
+      "city": "mercer-island",
+      "cityName": "Mercer Island",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/mountlake-terrace-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "mountlake-terrace-heating-and-cooling",
+      "city": "mountlake-terrace",
+      "cityName": "Mountlake Terrace",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/everett-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "everett-plumbing",
+      "city": "everett",
+      "cityName": "Everett",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/kirkland-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "kirkland-heating-and-cooling",
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/kirkland-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "kirkland-plumbing",
+      "city": "kirkland",
+      "cityName": "Kirkland",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/lynnwood-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "lynnwood-heating-and-cooling",
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/bothell-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "bothell-heating-and-cooling",
+      "city": "bothell",
+      "cityName": "Bothell",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/bothell-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "bothell-plumbing",
+      "city": "bothell",
+      "cityName": "Bothell",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/edmonds-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "edmonds-heating-and-cooling",
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/edmonds-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "edmonds-plumbing",
+      "city": "edmonds",
+      "cityName": "Edmonds",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/service-area/everett-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "everett-heating-and-cooling",
+      "city": "everett",
+      "cityName": "Everett",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/bellevue-heating-and-cooling/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "bellevue-heating-and-cooling",
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "vertical": "heating-and-cooling",
+      "verticalName": "Heating And Cooling"
+    }
+  },
+  {
+    "url": "/service-area/bellevue-plumbing/",
+    "template": "service-area-combo",
+    "params": {
+      "slug": "bellevue-plumbing",
+      "city": "bellevue",
+      "cityName": "Bellevue",
+      "vertical": "plumbing",
+      "verticalName": "Plumbing"
+    }
+  },
+  {
+    "url": "/customer-service-partner-program/",
+    "template": "standalone",
+    "params": {
+      "slug": "customer-service-partner-program",
+      "title": "Customer Service Partner Program"
+    }
+  },
+  {
+    "url": "/contact/",
+    "template": "standalone",
+    "params": {
+      "slug": "contact",
+      "title": "Contact"
+    }
+  },
+  {
+    "url": "/sewer-knowledge/",
+    "template": "standalone",
+    "params": {
+      "slug": "sewer-knowledge",
+      "title": "Sewer Knowledge"
+    }
+  },
+  {
+    "url": "/plumbing/",
+    "template": "standalone",
+    "params": {
+      "slug": "plumbing",
+      "title": "Plumbing"
+    }
+  },
+  {
+    "url": "/water-heaters/",
+    "template": "standalone",
+    "params": {
+      "slug": "water-heaters",
+      "title": "Water Heaters"
+    }
+  },
+  {
+    "url": "/sitemap/",
+    "template": "standalone",
+    "params": {
+      "slug": "sitemap",
+      "title": "Sitemap"
+    }
+  },
+  {
+    "url": "/eastmont/plumbing/",
+    "template": "city-service",
+    "params": {
+      "city": "eastmont",
+      "cityName": "Eastmont",
+      "service": "plumbing",
+      "serviceName": "Plumbing",
+      "subservice": null,
+      "subserviceName": null
+    }
+  },
+  {
+    "url": "/downtown-bellevue/",
+    "template": "city-hub",
+    "params": {
+      "city": "downtown-bellevue",
+      "cityName": "Downtown Bellevue"
+    }
+  },
+  {
+    "url": "/gas-line-repair-installation/",
+    "template": "standalone",
+    "params": {
+      "slug": "gas-line-repair-installation",
+      "title": "Gas Line Repair Installation"
+    }
+  },
+  {
+    "url": "/boiler-installation-repair/",
+    "template": "standalone",
+    "params": {
+      "slug": "boiler-installation-repair",
+      "title": "Boiler Installation Repair"
+    }
+  },
+  {
+    "url": "/toilet-repair-installation/",
+    "template": "standalone",
+    "params": {
+      "slug": "toilet-repair-installation",
+      "title": "Toilet Repair Installation"
+    }
+  },
+  {
+    "url": "/emergency-plumbing/",
+    "template": "standalone",
+    "params": {
+      "slug": "emergency-plumbing",
+      "title": "Emergency Plumbing"
+    }
+  },
+  {
+    "url": "/burst-pipe-repair/",
+    "template": "standalone",
+    "params": {
+      "slug": "burst-pipe-repair",
+      "title": "Burst Pipe Repair"
+    }
+  },
+  {
+    "url": "/water-filtration-systems/",
+    "template": "standalone",
+    "params": {
+      "slug": "water-filtration-systems",
+      "title": "Water Filtration Systems"
+    }
+  },
+  {
+    "url": "/water-line-installation/",
+    "template": "standalone",
+    "params": {
+      "slug": "water-line-installation",
+      "title": "Water Line Installation"
+    }
+  },
+  {
+    "url": "/french-drains/",
+    "template": "standalone",
+    "params": {
+      "slug": "french-drains",
+      "title": "French Drains"
+    }
+  },
+  {
+    "url": "/radiant-heating-services/",
+    "template": "standalone",
+    "params": {
+      "slug": "radiant-heating-services",
+      "title": "Radiant Heating Services"
+    }
+  },
+  {
+    "url": "/wet-yards/",
+    "template": "standalone",
+    "params": {
+      "slug": "wet-yards",
+      "title": "Wet Yards"
+    }
+  },
+  {
+    "url": "/city-sewer-hookup/",
+    "template": "standalone",
+    "params": {
+      "slug": "city-sewer-hookup",
+      "title": "City Sewer Hookup"
+    }
+  },
+  {
+    "url": "/sump-pumps/",
+    "template": "standalone",
+    "params": {
+      "slug": "sump-pumps",
+      "title": "Sump Pumps"
+    }
+  },
+  {
+    "url": "/reviews/",
+    "template": "standalone",
+    "params": {
+      "slug": "reviews",
+      "title": "Reviews"
+    }
+  },
+  {
+    "url": "/drains/",
+    "template": "standalone",
+    "params": {
+      "slug": "drains",
+      "title": "Drains"
+    }
+  },
+  {
+    "url": "/hydrojetting/",
+    "template": "standalone",
+    "params": {
+      "slug": "hydrojetting",
+      "title": "Hydrojetting"
+    }
+  },
+  {
+    "url": "/sewer-line-repair-replacement/",
+    "template": "standalone",
+    "params": {
+      "slug": "sewer-line-repair-replacement",
+      "title": "Sewer Line Repair Replacement"
+    }
+  },
+  {
+    "url": "/drain-camera-scoping/",
+    "template": "standalone",
+    "params": {
+      "slug": "drain-camera-scoping",
+      "title": "Drain Camera Scoping"
+    }
+  },
+  {
+    "url": "/cooling/air-conditioning-repair/",
+    "template": "standalone",
+    "params": {
+      "slug": "cooling/air-conditioning-repair",
+      "title": "Air Conditioning Repair"
+    }
+  },
+  {
+    "url": "/coupons/",
+    "template": "standalone",
+    "params": {
+      "slug": "coupons",
+      "title": "Coupons"
+    }
+  },
+  {
+    "url": "/electrical-safety-devices/",
+    "template": "standalone",
+    "params": {
+      "slug": "electrical-safety-devices",
+      "title": "Electrical Safety Devices"
+    }
+  },
+  {
+    "url": "/electrical-installations-upgrades-repairs/",
+    "template": "standalone",
+    "params": {
+      "slug": "electrical-installations-upgrades-repairs",
+      "title": "Electrical Installations Upgrades Repairs"
+    }
+  },
+  {
+    "url": "/electric-vehicle-chargers/",
+    "template": "standalone",
+    "params": {
+      "slug": "electric-vehicle-chargers",
+      "title": "Electric Vehicle Chargers"
+    }
+  },
+  {
+    "url": "/garbage-disposals/",
+    "template": "standalone",
+    "params": {
+      "slug": "garbage-disposals",
+      "title": "Garbage Disposals"
+    }
+  },
+  {
+    "url": "/trenchless-sewer-line-repair-replacement/",
+    "template": "standalone",
+    "params": {
+      "slug": "trenchless-sewer-line-repair-replacement",
+      "title": "Trenchless Sewer Line Repair Replacement"
+    }
+  },
+  {
+    "url": "/lynnwood/",
+    "template": "city-hub",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood"
+    }
+  },
+  {
+    "url": "/lynnwood/plumbing/tankless-water-heaters/",
+    "template": "city-service-sub",
+    "params": {
+      "city": "lynnwood",
+      "cityName": "Lynnwood",
+      "service": "plumbing",
+      "serviceName": "Plumbing",
+      "subservice": "tankless-water-heaters",
+      "subserviceName": "Tankless Water Heaters"
+    }
+  },
+  {
+    "url": "/terms-and-conditions/",
+    "template": "standalone",
+    "params": {
+      "slug": "terms-and-conditions",
+      "title": "Terms And Conditions"
+    }
+  },
+  {
+    "url": "/opt-out-preferences/",
+    "template": "standalone",
+    "params": {
+      "slug": "opt-out-preferences",
+      "title": "Opt Out Preferences"
+    }
+  },
+  {
+    "url": "/cookie-policy-eu/",
+    "template": "standalone",
+    "params": {
+      "slug": "cookie-policy-eu",
+      "title": "Cookie Policy Eu"
+    }
+  }
+]

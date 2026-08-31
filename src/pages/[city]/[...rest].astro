@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceBody from "../../components/ServiceBody.astro";
+import CTASection from "../../components/CTASection.astro";
+import routes from "../../data/routes.json";
+import { servicePageBySlug } from "../../data/service-pages";
+import { verticalBySlug } from "../../data/services";
+import { locationBySlug } from "../../data/locations";
+import { site } from "../../data/site";
+import { serviceSchema, breadcrumbSchema, faqSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+  const rows = (routes as any[]).filter((r) => r.template === "city-service" || r.template === "city-service-sub");
+  return rows.map((row) => ({
+    params: { city: row.params.city, rest: row.url.split("/").filter(Boolean).slice(1).join("/") },
+    props: { row },
+  }));
+}
+
+interface RouteRow {
+  url: string;
+  params: {
+    city: string;
+    cityName: string;
+    service: string;
+    serviceName: string;
+    subservice: string | null;
+    subserviceName: string | null;
+  };
+}
+
+const { row } = Astro.props as { row: RouteRow };
+const { city, cityName, service, serviceName, subservice, subserviceName } = row.params;
+const location = locationBySlug.get(city)!;
+const path = row.url;
+
+// Map the (service, subservice) combo onto an existing rich service-pages.ts
+// entry when one exists, so these local pages reuse real service content
+// instead of duplicating a thin description across dozens of URLs.
+function resolveServicePage() {
+  if (service === "air-conditioning" && subservice === "repair") return servicePageBySlug.get("cooling/air-conditioning-repair");
+  if (service === "air-conditioning" && subservice === "installation") return servicePageBySlug.get("cooling/ac-installation");
+  if (service === "air-conditioning" && subservice === "maintenance") return servicePageBySlug.get("cooling/ac-maintenance");
+  if (service === "plumbing" && subservice === "tankless-water-heaters") return servicePageBySlug.get("tankless-water-heaters");
+  if (service === "leak-detection") return servicePageBySlug.get("water-leak-detection");
+  return null;
+}
+const svc = resolveServicePage();
+const vertical = svc ? verticalBySlug.get(svc.vertical)! : verticalBySlug.get(service as any);
+
+const displayName = subserviceName ? `${serviceName} ${subserviceName}` : serviceName;
+const title = `${displayName} in ${cityName}, WA`;
+
+// Deterministic per-page variant so pages sharing the same underlying
+// service content still read as locally written, not templated clones.
+const seed = [...path].reduce((a, c) => a + c.charCodeAt(0), 0);
+const openers = [
+  `Homeowners in ${cityName} - ${location.blurb} - call us most for ${displayName.toLowerCase()} work, and our trucks are already routed through ${location.county} every day.`,
+  `${cityName} sits in ${location.county}, and it's one of the communities near ${location.landmark} where we run ${displayName.toLowerCase()} calls regularly.`,
+  `If you're in ${cityName} and need ${displayName.toLowerCase()}, our technicians already know the area around ${location.landmark} well.`,
+];
+const localIntro = openers[seed % openers.length];
+
+const related = vertical
+  ? vertical.subservices.filter((s) => s.slug !== svc?.slug).slice(0, 6)
+  : [];
+---
+
+<BaseLayout
+  title={title}
+  description={`${displayName} service in ${cityName}, WA from Gene Johnson - licensed, upfront pricing, 24/7 availability across ${location.county}.`}
+  path={path}
+  schema={[
+    serviceSchema({ name: displayName, description: localIntro, url: `${site.url}${path}`, areaServed: cityName }),
+    breadcrumbSchema([
+      { name: "Home", url: site.url },
+      { name: cityName, url: `${site.url}/${city}/` },
+      { name: displayName, url: `${site.url}${path}` },
+    ]),
+    svc ? faqSchema(svc.faqs) : null,
+  ]}
+>
+  <PageHero
+    eyebrow={`${cityName}, WA · ${location.county}`}
+    title={title}
+    tagline={localIntro}
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: cityName, href: `/${city}/` }, { name: displayName }]}
+  />
+
+  {svc ? (
+    <ServiceBody intro={svc.intro} highlights={svc.highlights} faqs={svc.faqs} image={svc.image} icon={svc.icon} related={related} />
+  ) : (
+    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8" data-animate>
+      <p class="text-lg leading-relaxed text-ink-700">{vertical?.intro}</p>
+      <a href={`/${vertical?.slug}/`} class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-red-600">
+        View all {vertical?.title} services →
+      </a>
+    </section>
+  )}
+
+  <CTASection heading={`Need ${displayName} in ${cityName}?`} subheading={`Same-day appointments available across ${location.county}.`} />
+</BaseLayout>

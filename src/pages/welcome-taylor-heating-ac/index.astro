@@ -1,0 +1,35 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { site } from "../../data/site";
+---
+
+<SimplePage
+  title="Welcome, Taylor Heating & AC Customers"
+  description="Taylor Heating & AC is now part of the Gene Johnson family of brands. Here's what that means for your service."
+  path="/welcome-taylor-heating-ac/"
+  eyebrow="Family of Brands"
+  tagline="Taylor Heating & AC is now part of the Gene Johnson family."
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "Welcome Taylor Customers" }]}
+>
+  <p>
+    If you've worked with Taylor Heating & AC in the past, welcome - Taylor is now part of the Gene Johnson family of brands, joining Fox, CPI, and Belred under one shared standard of licensed, upfront, guaranteed service.
+  </p>
+
+  <h2>What stays the same</h2>
+  <ul>
+    <li>The same commitment to upfront pricing before any work begins</li>
+    <li>The same fix-it-right guarantee on completed work</li>
+    <li>Continuity of service history for any prior Taylor customers</li>
+  </ul>
+
+  <h2>What's new</h2>
+  <ul>
+    <li>Access to the full Gene Johnson service lineup - heating, cooling, plumbing, and electrical</li>
+    <li>A larger fleet and technician bench for faster availability</li>
+    <li>Expanded coverage across the greater Puget Sound area</li>
+  </ul>
+
+  <p>
+    Questions about the transition? Call us at <a href={site.phoneHref}>{site.phoneDisplay}</a> or <a href="/contact/">reach out online</a> - our team can pull up your prior service history.
+  </p>
+</SimplePage>

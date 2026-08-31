@@ -1,0 +1,47 @@
+---
+import { site } from "../data/site";
+
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  tagline?: string;
+  breadcrumbs: { name: string; href?: string }[];
+  icon?: string;
+}
+
+const { eyebrow, title, tagline, breadcrumbs } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-navy-900 py-16 sm:py-20">
+  <div class="bg-grid pointer-events-none absolute inset-0 opacity-30"></div>
+  <div
+    data-parallax="0.15"
+    class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-red-600/25 blur-3xl"
+  ></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav class="mb-5 flex flex-wrap items-center gap-1.5 text-xs text-cream-100/60" aria-label="Breadcrumb">
+      {breadcrumbs.map((b, i) => (
+        <>
+          {i > 0 && <span>/</span>}
+          {b.href ? <a href={b.href} class="hover:text-white">{b.name}</a> : <span class="text-cream-100/90">{b.name}</span>}
+        </>
+      ))}
+    </nav>
+
+    {eyebrow && (
+      <p data-hero-fade class="mb-3 text-sm font-bold uppercase tracking-widest text-brand-red-400">{eyebrow}</p>
+    )}
+    <h1 data-hero-fade class="max-w-3xl text-balance font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+      {title}
+    </h1>
+    {tagline && <p data-hero-fade class="mt-4 max-w-2xl text-balance text-lg text-cream-100/80">{tagline}</p>}
+
+    <div data-hero-fade class="mt-8 flex flex-wrap items-center gap-4">
+      <a href="/schedule-now/" data-magnetic class="rounded-full bg-brand-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lift transition-transform hover:scale-105 hover:bg-brand-red-700">
+        Request Service Now
+      </a>
+      <a href={site.phoneHref} class="text-sm font-bold text-white/90 hover:text-white">Call {site.phoneDisplay} →</a>
+    </div>
+  </div>
+</section>

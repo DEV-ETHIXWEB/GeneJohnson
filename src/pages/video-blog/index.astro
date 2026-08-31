@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { getImage } from "../../lib/images";
+import { site } from "../../data/site";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog - Plumbing, Heating, Cooling & Electrical Tips"
+  description="Practical guides on plumbing, heating, cooling, and electrical topics from the licensed technicians at Gene Johnson."
+  path="/video-blog/"
+  schema={[breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Blog", url: `${site.url}/video-blog/` }])]}
+>
+  <PageHero
+    eyebrow="Resources"
+    title="Learn more about plumbing, heating, cooling & electrical"
+    tagline="Practical, no-nonsense guides written by the technicians who do this work every day."
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-animate-group>
+      {posts.map((post) => (
+        <a href={`/video-blog/${post.id}/`} data-animate-item class="group overflow-hidden rounded-3xl border border-navy-900/5 bg-white shadow-soft transition-shadow hover:shadow-lift">
+          <div class="aspect-[16/10] overflow-hidden">
+            <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={480} height={300} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-bold uppercase tracking-wide text-brand-red-600">{post.data.vertical}</p>
+            <h2 class="mt-2 font-display text-lg font-bold leading-snug text-navy-900">{post.data.title}</h2>
+            <p class="mt-2 text-sm text-ink-500 line-clamp-2">{post.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

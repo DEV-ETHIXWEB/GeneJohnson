@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import { brands } from "../../data/brands";
+import { site } from "../../data/site";
+import { breadcrumbSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title="Equipment Brands We Install"
+  description="Gene Johnson installs and services heating, cooling, and water heating equipment from trusted manufacturers including Mitsubishi, American Standard, Bosch, and Daikin."
+  path="/products/"
+  schema={[breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Products", url: `${site.url}/products/` }])]}
+>
+  <PageHero
+    eyebrow="Equipment"
+    title="Brands we install and stand behind"
+    tagline="We're manufacturer-trained on the equipment we recommend, not incentivized to push one brand over another."
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Products" }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 sm:grid-cols-2" data-animate-group>
+      {brands.map((b) => (
+        <a href={`/products/${b.slug}/`} data-animate-item class="group flex flex-col gap-3 rounded-2xl border border-navy-900/10 bg-white p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-red-600">{b.category}</p>
+          <h2 class="font-display text-xl font-bold text-navy-900">{b.name}</h2>
+          <p class="text-sm text-ink-500">{b.description}</p>
+          <span class="mt-2 text-sm font-semibold text-navy-900 group-hover:text-brand-red-600">Learn more →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

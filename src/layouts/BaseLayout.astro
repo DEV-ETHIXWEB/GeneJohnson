@@ -1,0 +1,73 @@
+---
+import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/inter";
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Seo from "../components/Seo.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import EmergencyBar from "../components/EmergencyBar.astro";
+import AccessibilityWidget from "../components/AccessibilityWidget.astro";
+import ChatWidget from "../components/ChatWidget.astro";
+import { localBusinessSchema } from "../lib/schema";
+
+export interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  noindex?: boolean;
+  schema?: (object | null)[];
+}
+
+const { title, description, path, image, noindex, schema = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2a2763" />
+    <!--
+      Alpine.js evaluates x-data/x-show/@click expressions from HTML attributes
+      via `new Function()`, which requires 'unsafe-eval' — without it Alpine
+      (mega-menu, mobile nav, both widgets) silently fails everywhere. Moving
+      off 'unsafe-eval' would mean switching to Alpine's restricted CSP build
+      (@alpinejs/csp) and rewriting the dynamically-built directives in
+      Header.astro to fit its safe-subset evaluator. Fine for a static
+      marketing site with no auth/payment flows; revisit if that changes.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io; base-uri 'self'; object-src 'none'"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <Seo title={title} description={description} path={path} image={image} noindex={noindex} schema={[localBusinessSchema(), ...schema]} />
+    <ClientRouter />
+  </head>
+  <body class="bg-cream-50 text-ink-900 antialiased">
+    <EmergencyBar />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <AccessibilityWidget />
+    <ChatWidget />
+    <!--
+      alpine-init.ts calls Alpine.start(), which synchronously fires the
+      "alpine:init" event that AccessibilityWidget/ChatWidget listen for to
+      register their Alpine.data() components. Deferred module scripts run in
+      document order, so this must load AFTER those components' own <script>
+      tags above (which attach the alpine:init listeners) — moving it back to
+      <head> silently breaks both widgets (Alpine.start() would fire, and thus
+      alpine:init, before anything is listening).
+    -->
+    <script src="../scripts/alpine-init.ts"></script>
+    <script src="../scripts/motion.ts"></script>
+  </body>
+</html>

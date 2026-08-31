@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import CouponCard from "../../components/CouponCard.astro";
+import { offers } from "../../data/offers";
+import { site } from "../../data/site";
+import { breadcrumbSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title="Coupons & Current Offers - Gene Johnson"
+  description="Current coupons and discounts on plumbing, heating, cooling, and electrical service from Gene Johnson, including tankless water heater rebates and senior/military discounts."
+  path="/coupons/"
+  schema={[breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Coupons", url: `${site.url}/coupons/` }])]}
+>
+  <PageHero
+    eyebrow="Offers"
+    title="Current coupons & discounts"
+    tagline="Mention these offers when you book - most can be combined with financing."
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Coupons" }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 sm:grid-cols-2" data-animate-group>
+      {offers.map((o) => (
+        <div data-animate-item>
+          <CouponCard title={o.title} detail={o.detail} icon={o.icon} code={o.code} />
+        </div>
+      ))}
+    </div>
+    <p class="mt-10 text-xs text-ink-300">
+      Offers cannot be combined unless stated otherwise. Valid for services performed by Gene Johnson within the greater Puget Sound service area. Ask your technician for full terms.
+    </p>
+  </section>
+
+  <CTASection />
+</BaseLayout>

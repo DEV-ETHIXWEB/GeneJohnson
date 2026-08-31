@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import CTASection from "../../../components/CTASection.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import { getImage } from "../../../lib/images";
+import { site } from "../../../data/site";
+import { breadcrumbSchema } from "../../../lib/schema";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `/video-blog/${post.id}/`;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={path}
+  schema={[
+    breadcrumbSchema([
+      { name: "Home", url: site.url },
+      { name: "Blog", url: `${site.url}/video-blog/` },
+      { name: post.data.title, url: `${site.url}${path}` },
+    ]),
+  ]}
+>
+  <PageHero
+    eyebrow={post.data.vertical}
+    title={post.data.title}
+    tagline={post.data.description}
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/video-blog/" }, { name: post.data.title }]}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <Image src={getImage(post.data.heroImage)} alt={post.data.title} width={900} height={520} class="mb-10 w-full rounded-2xl object-cover" data-animate />
+    <div class="prose-content" data-animate>
+      <Content />
+    </div>
+  </article>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .prose-content :global(h2) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-navy-900);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-content :global(p) {
+    color: var(--color-ink-700);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .prose-content :global(ul) {
+    margin: 1.25rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+    color: var(--color-ink-700);
+  }
+  .prose-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .prose-content :global(a) {
+    color: var(--color-brand-red-600);
+    font-weight: 600;
+  }
+</style>

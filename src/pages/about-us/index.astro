@@ -1,0 +1,41 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { Image } from "astro:assets";
+import { site } from "../../data/site";
+import fleet from "../../assets/images/team-fleet/fleet-vans.webp";
+---
+
+<SimplePage
+  title="About Gene Johnson - Family Owned Since 1976"
+  description="Gene Johnson has been a family-owned heating, cooling, plumbing, and electrical company serving the greater Seattle area since 1976."
+  path="/about-us/"
+  eyebrow="About Us"
+  tagline="Half a century of keeping Puget Sound homes comfortable, safe, and dry."
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "About Us" }]}
+>
+  <Image src={fleet} alt="Gene Johnson service fleet" width={900} height={500} class="mb-8 w-full rounded-2xl object-cover" />
+
+  <p>
+    Gene Johnson started as a single-truck plumbing outfit in {site.since}, built on a simple idea: show up on time, explain the problem honestly, and fix it right the first time. Nearly fifty years later, that's still the standard every technician is held to - we've just added heating, cooling, and electrical service along the way as homeowners asked for a company they could call for everything.
+  </p>
+
+  <h2>Still family owned</h2>
+  <p>
+    We're not a private-equity roll-up wearing a friendly logo. Gene Johnson remains family owned and operated, which means decisions about how we treat customers and employees are made by people who live in the community we serve - not a corporate office in another state.
+  </p>
+
+  <h2>One company, four trades</h2>
+  <p>
+    Most home service problems don't respect trade boundaries - a water heater failure can trip a breaker, a heat pump install touches both electrical and HVAC. Having plumbing, heating, cooling, and electrical under one roof means one phone call and one company accountable for the whole job.
+  </p>
+
+  <h2>Licensed and insured</h2>
+  <ul>
+    {site.licenses.map((l) => <li>{l.label} {l.value}</li>)}
+  </ul>
+
+  <h2>Where we work</h2>
+  <p>
+    From Everett to Puyallup, our trucks cover King, Snohomish, and Pierce County every day. See our full <a href="/service-area/">service area</a> for coverage by city.
+  </p>
+</SimplePage>

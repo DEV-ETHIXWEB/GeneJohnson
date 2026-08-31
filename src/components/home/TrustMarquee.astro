@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import bbb from "../../assets/images/badges/bbb.webp";
+import elite1 from "../../assets/images/badges/homeadvisor-elite-1.webp";
+import elite2 from "../../assets/images/badges/homeadvisor-elite-2.webp";
+import elite3 from "../../assets/images/badges/homeadvisor-elite-3.webp";
+import ti from "../../assets/images/badges/ti-verified.webp";
+import award1 from "../../assets/images/badges/award-1.webp";
+import award3 from "../../assets/images/badges/award-3.webp";
+import award4 from "../../assets/images/badges/award-4.webp";
+
+const badges = [
+  { src: bbb, w: 234, h: 83, alt: "BBB Accredited Business" },
+  { src: elite1, w: 128, h: 127, alt: "HomeAdvisor Elite Service" },
+  { src: elite2, w: 146, h: 127, alt: "HomeAdvisor Screened & Approved" },
+  { src: elite3, w: 127, h: 127, alt: "Best of HomeAdvisor 2018 Winner" },
+  { src: ti, w: 150, h: 150, alt: "Trust Index Verified" },
+  { src: award1, w: 60, h: 60, alt: "Community trusted award" },
+  { src: award3, w: 60, h: 60, alt: "Handshake guarantee award" },
+  { src: award4, w: 60, h: 60, alt: "Neighborhood favorite award" },
+];
+---
+
+<section class="border-y border-navy-900/5 bg-cream-100 py-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <p class="mb-7 text-center text-xs font-bold uppercase tracking-widest text-ink-300">Trusted &amp; certified</p>
+    <div
+      class="marquee-viewport overflow-hidden"
+      style="mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);"
+    >
+      <div class="flex w-max shrink-0 animate-marquee items-stretch gap-6" data-marquee-track>
+        {badges.map((b) => (
+          <div class="flex h-24 w-40 shrink-0 items-center justify-center rounded-2xl border border-navy-900/8 bg-white px-5 shadow-soft">
+            <Image src={b.src} alt={b.alt} width={b.w} height={b.h} class="h-16 w-auto max-w-full object-contain" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-viewport:hover [data-marquee-track] {
+    animation-play-state: paused;
+  }
+</style>

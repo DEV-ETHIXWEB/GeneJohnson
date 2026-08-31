@@ -1,0 +1,37 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { site } from "../../data/site";
+---
+
+<SimplePage
+  title="Cookie Policy"
+  description="How Gene Johnson's website uses cookies and similar technologies."
+  path="/cookie-policy-eu/"
+  eyebrow="Legal"
+  tagline="Last updated: January 2026"
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "Cookie Policy" }]}
+  hideCta
+>
+  <h2>What are cookies</h2>
+  <p>
+    Cookies are small text files stored on your device that help websites function properly and understand how visitors use them.
+  </p>
+
+  <h2>Types of cookies we use</h2>
+  <ul>
+    <li><strong>Functional</strong> - required for core site features like navigation and forms</li>
+    <li><strong>Preferences</strong> - remember choices like region or display settings</li>
+    <li><strong>Statistics</strong> - anonymous analytics on how the site is used, to improve it over time</li>
+    <li><strong>Marketing</strong> - used to measure the effectiveness of ads and campaigns</li>
+  </ul>
+
+  <h2>Managing your preferences</h2>
+  <p>
+    You can adjust or withdraw cookie consent at any time through your browser settings, or via our <a href="/opt-out-preferences/">opt-out preferences</a> page.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</SimplePage>

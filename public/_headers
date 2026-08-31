@@ -1,0 +1,12 @@
+# Security headers for static hosts that read this file (Netlify, Cloudflare
+# Pages). If you deploy to Vercel instead, the equivalent config is in
+# vercel.json. GitHub Pages cannot set custom response headers at all — if
+# that's the target host, these headers won't apply and there's no static-host
+# workaround; a CDN in front of it (e.g. Cloudflare) would be needed.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

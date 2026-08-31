@@ -1,0 +1,32 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { site } from "../../data/site";
+---
+
+<SimplePage
+  title="Accessibility Statement"
+  description="Gene Johnson is committed to making our website accessible to everyone, including people with disabilities."
+  path="/accessibility/"
+  eyebrow="ADA Notice"
+  tagline="Our commitment to a website that works for everyone."
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "Accessibility" }]}
+  hideCta
+>
+  <p>
+    {site.name} is committed to ensuring digital accessibility for people of all abilities. We continually work to improve the accessibility of this website and apply relevant accessibility standards.
+  </p>
+
+  <h2>Our approach</h2>
+  <ul>
+    <li>Semantic HTML structure and descriptive alt text for images</li>
+    <li>Keyboard-navigable menus and forms</li>
+    <li>Sufficient color contrast between text and backgrounds</li>
+    <li>Motion and animation that respects your device's reduced-motion setting</li>
+  </ul>
+
+  <h2>Feedback</h2>
+  <p>
+    If you encounter any accessibility barriers on this site, please let us know so we can address them. You can reach our team by phone at{" "}
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> or by email at <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</SimplePage>

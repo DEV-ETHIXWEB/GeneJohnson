@@ -1,0 +1,44 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { site } from "../../data/site";
+---
+
+<SimplePage
+  title="Terms & Conditions"
+  description="Terms and conditions for use of the Gene Johnson website and services."
+  path="/terms-and-conditions/"
+  eyebrow="Legal"
+  tagline="Last updated: January 2026"
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "Terms & Conditions" }]}
+  hideCta
+>
+  <h2>Acceptance of terms</h2>
+  <p>
+    By accessing or using {site.name}'s website, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use this site.
+  </p>
+
+  <h2>Services</h2>
+  <p>
+    Quotes and pricing provided on this site are estimates and subject to confirmation during an in-home or on-site evaluation. Final pricing is agreed upon in writing before work begins.
+  </p>
+
+  <h2>Website content</h2>
+  <p>
+    All content on this site - including text, images, logos, and design - is the property of {site.name} or its licensors and may not be reproduced without permission.
+  </p>
+
+  <h2>Limitation of liability</h2>
+  <p>
+    {site.name} is not liable for indirect, incidental, or consequential damages arising from use of this website. Nothing in these terms limits liability that cannot be excluded under applicable law.
+  </p>
+
+  <h2>Governing law</h2>
+  <p>
+    These terms are governed by the laws of the State of Washington.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about these terms can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</SimplePage>

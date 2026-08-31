@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import CTASection from "../../../components/CTASection.astro";
+import Icon from "../../../components/Icon.astro";
+import routes from "../../../data/routes.json";
+import { verticalBySlug } from "../../../data/services";
+import { locationBySlug } from "../../../data/locations";
+import { site } from "../../../data/site";
+import { localBusinessSchema, breadcrumbSchema } from "../../../lib/schema";
+
+export function getStaticPaths() {
+  const rows = (routes as any[]).filter((r) => r.template === "service-area-combo");
+  return rows.map((row) => ({
+    params: { slug: row.params.slug },
+    props: { row },
+  }));
+}
+
+interface RouteRow {
+  url: string;
+  params: {
+    slug: string;
+    city: string | null;
+    cityName: string | null;
+    vertical: string;
+    verticalName: string;
+  };
+}
+
+const { row } = Astro.props as { row: RouteRow };
+const { city, cityName, vertical: verticalSlug, verticalName } = row.params;
+const location = city ? locationBySlug.get(city) : null;
+const path = row.url;
+
+const includesPlumbing = verticalSlug.includes("plumbing");
+const includesHeatingCooling = verticalSlug.includes("heating") || verticalSlug.includes("cooling");
+const relevantVerticals = [
+  includesPlumbing ? verticalBySlug.get("plumbing") : null,
+  includesHeatingCooling ? verticalBySlug.get("heating") : null,
+  includesHeatingCooling ? verticalBySlug.get("cooling") : null,
+].filter(Boolean) as ReturnType<typeof verticalBySlug.get>[];
+
+const title = `${verticalName} in ${cityName}, WA`;
+---
+
+<BaseLayout
+  title={title}
+  description={`Gene Johnson provides ${verticalName.toLowerCase()} service to ${cityName}, WA - licensed technicians, upfront pricing, and 24/7 availability.`}
+  path={path}
+  schema={[
+    localBusinessSchema({ areaServed: [cityName ?? verticalName] }),
+    breadcrumbSchema([
+      { name: "Home", url: site.url },
+      { name: "Service Area", url: `${site.url}/service-area/` },
+      { name: title, url: `${site.url}${path}` },
+    ]),
+  ]}
+>
+  <PageHero
+    eyebrow={location?.county ?? "Service Area"}
+    title={title}
+    tagline={location ? `Serving ${cityName} and the surrounding ${location.county} area - ${location.blurb}.` : `Serving ${cityName}, WA.`}
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Service Area", href: "/service-area/" }, { name: title }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-animate-group>
+      {relevantVerticals.map((v) => v && (
+        <a href={`/${v.slug}/`} data-animate-item class="group flex flex-col gap-3 rounded-2xl border border-navy-900/10 bg-white p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
+          <span class="flex h-20 w-20 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-navy-900">
+            <Icon name={v.icon} class="h-12 w-12 text-navy-700 transition-colors duration-300 group-hover:text-accent-green-400" />
+          </span>
+          <span class="font-display font-bold text-navy-900">{v.title} in {cityName}</span>
+          <span class="text-sm text-ink-500">{v.intro}</span>
+        </a>
+      ))}
+    </div>
+    {city && (
+      <a href={`/${city}/`} class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-red-600">
+        View all services in {cityName} →
+      </a>
+    )}
+  </section>
+
+  <CTASection heading={`Need ${verticalName} in ${cityName}?`} />
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import { site } from "../data/site";
+
+const quickReplies = [
+  "What are your hours?",
+  "Do you serve my area?",
+  "How much does a repair cost?",
+  "I have a plumbing emergency",
+];
+---
+
+<div
+  x-data="gjChat()"
+  x-init="init()"
+  class="fixed bottom-5 right-5 z-[60] print:hidden"
+  data-chat-widget
+  data-phone-display={site.phoneDisplay}
+  data-phone-href={site.phoneHref}
+>
+  <button
+    @click="toggle()"
+    :aria-expanded="open"
+    aria-label="Open site assistant"
+    class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red-600 text-white shadow-lift transition-transform hover:scale-105"
+  >
+    <svg x-show="!open" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" stroke-linejoin="round" />
+      <circle cx="8.5" cy="9.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="9.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="9.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+    <svg x-show="open" x-cloak class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" /></svg>
+  </button>
+
+  <div
+    x-show="open"
+    x-cloak
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-y-3"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    class="absolute bottom-[4.75rem] right-0 flex h-[32rem] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-navy-900/10 bg-white shadow-lift"
+    role="dialog"
+    aria-label="Site assistant"
+  >
+    <div class="flex items-center justify-between bg-navy-900 px-4 py-3.5">
+      <div>
+        <p class="font-display text-sm font-bold text-white">Gene Johnson Assistant</p>
+        <p class="text-[0.7rem] text-cream-100/60">Searches this site · not a live agent</p>
+      </div>
+      <a href={site.phoneHref} class="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-white hover:bg-white/20">Call now</a>
+    </div>
+
+    <div class="flex-1 space-y-3 overflow-y-auto p-4" x-ref="scrollArea">
+      <template x-for="(m, i) in messages" :key="i">
+        <div :class="m.role === 'user' ? 'flex justify-end' : 'flex justify-start'">
+          <div
+            :class="m.role === 'user' ? 'bg-navy-900 text-white' : 'bg-cream-100 text-ink-900'"
+            class="max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed"
+            x-html="m.html"
+          ></div>
+        </div>
+      </template>
+      <div x-show="loading" class="flex justify-start">
+        <div class="flex items-center gap-1 rounded-2xl bg-cream-100 px-3.5 py-2.5">
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-300"></span>
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-300" style="animation-delay:0.15s"></span>
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-300" style="animation-delay:0.3s"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-navy-900/10 p-3">
+      <div x-show="messages.length <= 1" class="mb-2 flex flex-wrap gap-1.5">
+        {quickReplies.map((q) => (
+          <button type="button" @click={`ask(${JSON.stringify(q)})`} class="rounded-full border border-navy-900/15 px-2.5 py-1 text-xs font-medium text-ink-700 hover:bg-cream-100">
+            {q}
+          </button>
+        ))}
+      </div>
+      <form @submit.prevent="ask(input); input = ''" class="flex items-center gap-2">
+        <input
+          x-model="input"
+          type="text"
+          placeholder="Ask about a service, city, or offer..."
+          class="flex-1 rounded-full border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"
+        />
+        <button type="submit" aria-label="Send" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-red-600 text-white hover:bg-brand-red-700">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/chat.ts"></script>

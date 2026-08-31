@@ -1,0 +1,33 @@
+---
+// Renders an inline SVG icon from the brand's icon set (src/assets/icons/achromatic
+// has one shape per icon; every other variant folder is the identical shape with a
+// different hardcoded fill color). We strip the hardcoded fill and swap in
+// `currentColor` so a single icon file can be recolored and smoothly transitioned
+// on hover purely with CSS `text-*` / `group-hover:text-*` utility classes on the
+// wrapper — no need to swap SVGs or ship duplicate files per color.
+export interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className = "" } = Astro.props;
+
+const modules = import.meta.glob("/src/assets/icons/achromatic/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const raw = modules[`/src/assets/icons/achromatic/${name}.svg`] ?? "";
+const svg = raw.replace(/fill="(?!none")[^"]*"/g, 'fill="currentColor"');
+---
+
+<span class:list={["icon inline-flex shrink-0", className]} set:html={svg} />
+
+<style>
+  .icon :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>

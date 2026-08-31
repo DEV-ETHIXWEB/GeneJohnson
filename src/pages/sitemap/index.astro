@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { verticals } from "../../data/services";
+import { locations } from "../../data/locations";
+import { site } from "../../data/site";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const companyLinks = [
+  { name: "About Us", href: "/about-us/" },
+  { name: "Why Choose Us", href: "/about-us/why-choose-us/" },
+  { name: "Careers", href: "/about-us/careers/" },
+  { name: "Financing", href: "/about-us/financing/" },
+  { name: "Community", href: "/about-us/community/" },
+  { name: "Reviews", href: "/reviews/" },
+  { name: "Coupons", href: "/coupons/" },
+  { name: "Blog", href: "/video-blog/" },
+  { name: "Contact", href: "/contact/" },
+  { name: "Schedule Now", href: "/schedule-now/" },
+];
+const legalLinks = [
+  { name: "Terms & Conditions", href: "/terms-and-conditions/" },
+  { name: "Cookie Policy", href: "/cookie-policy-eu/" },
+  { name: "Accessibility", href: "/accessibility/" },
+  { name: "Opt-Out Preferences", href: "/opt-out-preferences/" },
+];
+---
+
+<BaseLayout
+  title="Sitemap"
+  description="Full sitemap of Gene Johnson's website - services, service areas, and company pages."
+  path="/sitemap/"
+  schema={[breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Sitemap", url: `${site.url}/sitemap/` }])]}
+>
+  <PageHero eyebrow="Sitemap" title="Every page on our site" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Sitemap" }]} />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {verticals.map((v) => (
+        <div>
+          <h2 class="font-display font-bold text-navy-900">{v.title}</h2>
+          <ul class="mt-3 space-y-2 text-sm text-ink-500">
+            <li><a href={`/${v.slug}/`} class="hover:text-brand-red-600">{v.title} Overview</a></li>
+            {v.subservices.map((s) => (
+              <li><a href={`/${s.slug}/`} class="hover:text-brand-red-600">{s.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div>
+        <h2 class="font-display font-bold text-navy-900">Company</h2>
+        <ul class="mt-3 space-y-2 text-sm text-ink-500">
+          {companyLinks.map((l) => <li><a href={l.href} class="hover:text-brand-red-600">{l.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-display font-bold text-navy-900">Legal</h2>
+        <ul class="mt-3 space-y-2 text-sm text-ink-500">
+          {legalLinks.map((l) => <li><a href={l.href} class="hover:text-brand-red-600">{l.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-display font-bold text-navy-900">Service Area</h2>
+        <ul class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-500">
+          {locations.map((l) => <li><a href={`/${l.slug}/`} class="hover:text-brand-red-600">{l.name}</a></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

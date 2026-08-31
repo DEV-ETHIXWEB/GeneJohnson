@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import TrustMarquee from "../../components/home/TrustMarquee.astro";
+import { testimonials } from "../../data/testimonials";
+import { site } from "../../data/site";
+import { breadcrumbSchema, localBusinessSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title="Customer Reviews - Gene Johnson"
+  description="Read what Puget Sound homeowners say about Gene Johnson's heating, cooling, plumbing, and electrical service. 2,400+ five-star reviews."
+  path="/reviews/"
+  schema={[localBusinessSchema(), breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Reviews", url: `${site.url}/reviews/` }])]}
+>
+  <PageHero
+    eyebrow="Reviews"
+    title="2,400+ five-star reviews and counting"
+    tagline="Real feedback from homeowners across the greater Puget Sound area."
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Reviews" }]}
+  />
+
+  <TrustMarquee />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-3" data-animate-group>
+      {testimonials.map((t) => (
+        <figure data-animate-item class="flex flex-col rounded-3xl border border-navy-900/5 bg-white p-7 shadow-soft">
+          <div class="flex gap-0.5 text-brand-red-500">
+            {Array.from({ length: t.rating }).map(() => (
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+            ))}
+          </div>
+          <blockquote class="mt-4 flex-1 text-sm leading-relaxed text-ink-700">"{t.text}"</blockquote>
+          <figcaption class="mt-5 border-t border-navy-900/5 pt-4">
+            <p class="font-display text-sm font-bold text-navy-900">{t.name}</p>
+            <p class="text-xs text-ink-500">{t.location} &middot; {t.service}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

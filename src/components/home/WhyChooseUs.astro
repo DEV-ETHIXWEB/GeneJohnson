@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import technician from "../../assets/images/team-fleet/friendly-technician.webp";
+import Icon from "../Icon.astro";
+
+const points = [
+  { icon: "Family Owned", title: "Family Owned & Operated", text: `Operating since 1976, we back every job with the guarantee of a company that plans to be here for another 50 years.` },
+  { icon: "Fixed Right Guarantee", title: "Quality Workmanship", text: "From a dripping faucet to a full sewer replacement, we handle complex issues with trusted, code-compliant results." },
+  { icon: "Free Diagnostics", title: "Customer Education", text: "We explain every option in plain language and answer every concern before we start - no pressure, no surprises." },
+];
+---
+
+<section class="relative overflow-hidden bg-cream-100 py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div data-animate class="relative">
+        <div class="overflow-hidden rounded-[2rem] shadow-lift">
+          <Image src={technician} alt="Friendly Gene Johnson technician" width={680} height={520} class="h-full w-full object-cover" />
+        </div>
+        <div class="absolute -right-6 -top-6 rounded-2xl bg-navy-950 p-5 text-white shadow-lift">
+          <p class="font-display text-3xl font-extrabold">49+</p>
+          <p class="text-xs uppercase tracking-wide text-cream-100/70">Years of trust</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-sm font-bold uppercase tracking-widest text-brand-red-600">Why choose us</p>
+        <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-900 sm:text-4xl">Comfort and safety you can actually count on</h2>
+
+        <div class="mt-8 space-y-6" data-animate-group>
+          {points.map((p) => (
+            <div data-animate-item class="flex gap-4">
+              <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-white shadow-soft">
+                <Icon name={p.icon} class="h-12 w-12 text-brand-red-600" />
+              </span>
+              <div>
+                <h3 class="font-display text-lg font-bold text-navy-900">{p.title}</h3>
+                <p class="mt-1 text-sm text-ink-500">{p.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

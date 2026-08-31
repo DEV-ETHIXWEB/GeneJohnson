@@ -1,0 +1,33 @@
+---
+import SimplePage from "../../components/SimplePage.astro";
+import { site } from "../../data/site";
+---
+
+<SimplePage
+  title="Opt-Out Preferences"
+  description="Manage your marketing communication and data preferences with Gene Johnson."
+  path="/opt-out-preferences/"
+  eyebrow="Legal"
+  tagline="Manage how we contact you."
+  breadcrumbs={[{ name: "Home", href: "/" }, { name: "Opt-Out Preferences" }]}
+  hideCta
+>
+  <p>
+    We only use your contact information to follow up on service requests and, if you've opted in, to send occasional offers and maintenance reminders. You can opt out of marketing communications at any time.
+  </p>
+
+  <h2>To opt out of marketing emails</h2>
+  <p>
+    Use the unsubscribe link at the bottom of any marketing email, or email <a href={`mailto:${site.email}`}>{site.email}</a> with "Unsubscribe" in the subject line.
+  </p>
+
+  <h2>To opt out of marketing texts</h2>
+  <p>
+    Reply "STOP" to any marketing text message you receive from us.
+  </p>
+
+  <h2>Service-related communications</h2>
+  <p>
+    Appointment confirmations, technician arrival notifications, and invoices are considered service communications, not marketing, and will continue regardless of marketing opt-out status.
+  </p>
+</SimplePage>

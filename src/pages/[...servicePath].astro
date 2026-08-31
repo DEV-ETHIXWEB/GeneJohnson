@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceBody from "../components/ServiceBody.astro";
+import CTASection from "../components/CTASection.astro";
+import { servicePages } from "../data/service-pages";
+import { verticalBySlug } from "../data/services";
+import { site } from "../data/site";
+import { serviceSchema, breadcrumbSchema, faqSchema } from "../lib/schema";
+
+export function getStaticPaths() {
+  return servicePages.map((page) => ({
+    params: { servicePath: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const vertical = verticalBySlug.get(page.vertical)!;
+const related = vertical.subservices.filter((s) => s.slug !== page.slug);
+const path = `/${page.slug}/`;
+---
+
+<BaseLayout
+  title={`${page.title} in Seattle, WA`}
+  description={page.tagline}
+  path={path}
+  schema={[
+    serviceSchema({ name: page.title, description: page.intro, url: `${site.url}${path}` }),
+    breadcrumbSchema([
+      { name: "Home", url: site.url },
+      { name: vertical.title, url: `${site.url}/${vertical.slug}/` },
+      { name: page.title, url: `${site.url}${path}` },
+    ]),
+    faqSchema(page.faqs),
+  ]}
+>
+  <PageHero
+    eyebrow={vertical.title}
+    title={page.title}
+    tagline={page.tagline}
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: vertical.title, href: `/${vertical.slug}/` }, { name: page.title }]}
+  />
+  <ServiceBody intro={page.intro} highlights={page.highlights} faqs={page.faqs} image={page.image} icon={page.icon} related={related} />
+  <CTASection />
+</BaseLayout>

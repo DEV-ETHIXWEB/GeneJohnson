@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand — sampled directly from the real Gene Johnson logo & icon set:
+     navy #2A2763 and red #FD030F are the two dominant pixel colors. */
+  --color-navy-950: #14123a;
+  --color-navy-900: #1c1a4d;
+  --color-navy-800: #221f58;
+  --color-navy-700: #2b2763;
+  --color-navy-600: #3a3577;
+  --color-navy-500: #4c4694;
+
+  --color-brand-red-700: #b8020c;
+  --color-brand-red-600: #e2030e;
+  --color-brand-red-500: #fd030f;
+  --color-brand-red-400: #ff4d55;
+
+  /* Accent green — from the client's own icon/brand system (their Figma
+     "Accent" export), confirmed as a color they like used on the site. Used
+     sparingly as a highlight, not as a replacement for the navy/red identity. */
+  --color-accent-green-700: #5a9900;
+  --color-accent-green-600: #73c000;
+  --color-accent-green-500: #8ad600;
+  --color-accent-green-400: #a3e635;
+
+  --color-cream-50: #ffffff;
+  --color-cream-100: #f4f5f9;
+  --color-cream-200: #e8e9f1;
+
+  --color-ink-900: #17162e;
+  --color-ink-700: #3d3c54;
+  --color-ink-500: #666480;
+  --color-ink-300: #9c9bb3;
+
+  --font-display: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(11, 30, 61, 0.04), 0 12px 32px -12px rgba(11, 30, 61, 0.18);
+  --shadow-lift: 0 24px 60px -20px rgba(11, 30, 61, 0.35);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+html {
+  scroll-behavior: auto;
+  background: var(--color-cream-50);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink-900);
+  background: var(--color-cream-50);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-brand-red-500);
+  color: white;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+[data-animate] {
+  will-change: transform, opacity;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.text-gradient-red {
+  background: linear-gradient(120deg, var(--color-brand-red-500), var(--color-brand-red-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

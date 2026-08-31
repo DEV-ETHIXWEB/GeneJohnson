@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../PageHero.astro";
+import CTASection from "../CTASection.astro";
+import Testimonials from "../home/Testimonials.astro";
+import Icon from "../Icon.astro";
+import { site } from "../../data/site";
+import type { Vertical } from "../../data/services";
+import { serviceSchema, breadcrumbSchema } from "../../lib/schema";
+
+export interface Props {
+  vertical: Vertical;
+}
+
+const { vertical } = Astro.props;
+const path = `/${vertical.slug}/`;
+---
+
+<BaseLayout
+  title={`${vertical.title} Services in Seattle, WA`}
+  description={`${vertical.tagline} ${vertical.intro}`}
+  path={path}
+  schema={[
+    serviceSchema({ name: vertical.title, description: vertical.intro, url: `${site.url}${path}` }),
+    breadcrumbSchema([
+      { name: "Home", url: site.url },
+      { name: vertical.title, url: `${site.url}${path}` },
+    ]),
+  ]}
+>
+  <PageHero
+    eyebrow={vertical.title}
+    title={vertical.tagline}
+    tagline={vertical.intro}
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: vertical.title }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="font-display text-2xl font-bold text-navy-900 sm:text-3xl">{vertical.title} services we offer</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-animate-group>
+      {vertical.subservices.map((s) => (
+        <a href={`/${s.slug}/`} data-animate-item class="group flex items-center gap-4 rounded-2xl border border-navy-900/10 bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
+          <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-cream-100 group-hover:bg-navy-900">
+            <Icon name={s.icon} class="h-12 w-12 text-navy-700 transition-colors duration-300 group-hover:text-accent-green-400" />
+          </span>
+          <span class="font-semibold text-navy-900">{s.title}</span>
+          <svg class="ml-auto h-4 w-4 text-ink-300 transition-transform group-hover:translate-x-1 group-hover:text-brand-red-600" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <Testimonials />
+  <CTASection />
+</BaseLayout>

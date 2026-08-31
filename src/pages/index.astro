@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import ServiceGrid from "../components/home/ServiceGrid.astro";
+import OffersSection from "../components/home/OffersSection.astro";
+import WhyChooseUs from "../components/home/WhyChooseUs.astro";
+import TrustMarquee from "../components/home/TrustMarquee.astro";
+import Philosophy from "../components/home/Philosophy.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import BlogTeasers from "../components/home/BlogTeasers.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<BaseLayout
+  title="Gene Johnson Heating, Cooling, Plumbing & Electrical Services in Seattle, WA"
+  description="Family-owned Seattle heating, cooling, plumbing & electrical company since 1976. 24/7 emergency service, upfront pricing, and a fix-it-right guarantee."
+  path="/"
+>
+  <Hero />
+  <TrustMarquee />
+  <ServiceGrid />
+  <OffersSection />
+  <WhyChooseUs />
+  <Philosophy />
+  <Testimonials />
+  <BlogTeasers />
+  <CTASection />
+</BaseLayout>

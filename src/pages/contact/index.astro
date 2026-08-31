@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { site, formEndpoint } from "../../data/site";
+import { breadcrumbSchema, localBusinessSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title="Contact Gene Johnson"
+  description="Reach Gene Johnson Heating, Cooling, Plumbing & Electrical - call 206.792.7495, request service online, or visit one of our three Puget Sound locations."
+  path="/contact/"
+  schema={[localBusinessSchema(), breadcrumbSchema([{ name: "Home", url: site.url }, { name: "Contact", url: `${site.url}/contact/` }])]}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Get in touch"
+    tagline="Call, request service online, or stop by one of our three Puget Sound locations."
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+      <div data-animate>
+        <h2 class="font-display text-xl font-bold text-navy-900">Call us</h2>
+        <a href={site.phoneHref} class="mt-2 block font-display text-3xl font-extrabold text-brand-red-600">{site.phoneDisplay}</a>
+        <p class="mt-1 text-sm text-ink-500">Available 24/7 for emergencies</p>
+
+        <h2 class="mt-8 font-display text-xl font-bold text-navy-900">Email</h2>
+        <a href={`mailto:${site.email}`} class="mt-2 block text-ink-700 hover:text-brand-red-600">{site.email}</a>
+
+        <h2 class="mt-8 font-display text-xl font-bold text-navy-900">Locations</h2>
+        <ul class="mt-3 space-y-3 text-sm text-ink-700">
+          {site.locationsList.map((loc) => <li>{loc}</li>)}
+        </ul>
+
+        <h2 class="mt-8 font-display text-xl font-bold text-navy-900">Licenses</h2>
+        <ul class="mt-3 space-y-1.5 text-sm text-ink-500">
+          {site.licenses.map((l) => <li>{l.label} {l.value}</li>)}
+        </ul>
+      </div>
+
+      <form
+        data-animate
+        class="rounded-3xl border border-navy-900/10 bg-white p-8 shadow-soft"
+        action={formEndpoint}
+        method="POST"
+      >
+        <h2 class="font-display text-xl font-bold text-navy-900">Send us a message</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="sm:col-span-1">
+            <label class="text-sm font-semibold text-ink-700" for="name">Full name</label>
+            <input id="name" name="name" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="text-sm font-semibold text-ink-700" for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-semibold text-ink-700" for="email">Email</label>
+            <input id="email" name="email" type="email" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-semibold text-ink-700" for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="4" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"></textarea>
+          </div>
+        </div>
+        <button type="submit" data-magnetic class="mt-6 w-full rounded-full bg-brand-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lift transition-transform hover:scale-[1.02] hover:bg-brand-red-700 sm:w-auto">
+          Send message
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

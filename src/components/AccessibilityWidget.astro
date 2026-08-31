@@ -1,0 +1,193 @@
+---
+// Floating accessibility toolbar: text size, contrast, motion, underline
+// links, and a dyslexia-friendly font — all applied via classes/vars on
+// <html> and persisted in localStorage so they survive navigation and
+// repeat visits without needing any backend.
+---
+
+<div
+  x-data="a11yWidget()"
+  x-init="init()"
+  class="fixed bottom-5 left-5 z-[60] print:hidden"
+  data-a11y-widget
+>
+  <button
+    @click="open = !open"
+    :aria-expanded="open"
+    aria-label="Accessibility options"
+    class="flex h-14 w-14 items-center justify-center rounded-full bg-navy-900 text-white shadow-lift transition-transform hover:scale-105"
+  >
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="12" cy="4.5" r="1.8" fill="currentColor" stroke="none" />
+      <path d="M4 8.5c2.5 1 5.3 1.5 8 1.5s5.5-.5 8-1.5" stroke-linecap="round" />
+      <path d="M12 10v4m0 0l-3 7m3-7l3 7" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M9 13.5h6" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  <div
+    x-show="open"
+    x-cloak
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-y-2"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    @click.outside="open = false"
+    @keydown.escape.window="open = false"
+    class="absolute bottom-[4.5rem] left-0 w-72 rounded-2xl border border-navy-900/10 bg-white p-5 shadow-lift"
+    role="dialog"
+    aria-label="Accessibility settings"
+  >
+    <div class="flex items-center justify-between">
+      <h2 class="font-display text-sm font-bold text-navy-900">Accessibility</h2>
+      <button @click="open = false" aria-label="Close accessibility panel" class="text-ink-300 hover:text-navy-900">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <div class="mt-4 space-y-4 text-sm">
+      <div class="flex items-center justify-between">
+        <span class="font-medium text-ink-700">Text size</span>
+        <div class="flex items-center gap-1.5">
+          <button @click="decreaseFontSize()" aria-label="Decrease text size" class="flex h-8 w-8 items-center justify-center rounded-lg border border-navy-900/15 font-bold text-navy-900 hover:bg-cream-100">A-</button>
+          <button @click="resetFontSize()" aria-label="Reset text size" class="flex h-8 w-8 items-center justify-center rounded-lg border border-navy-900/15 text-xs font-bold text-navy-900 hover:bg-cream-100">A</button>
+          <button @click="increaseFontSize()" aria-label="Increase text size" class="flex h-8 w-8 items-center justify-center rounded-lg border border-navy-900/15 text-lg font-bold text-navy-900 hover:bg-cream-100">A+</button>
+        </div>
+      </div>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">High contrast</span>
+        <input type="checkbox" x-model="contrast" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Underline links</span>
+        <input type="checkbox" x-model="underlineLinks" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Reduce motion</span>
+        <input type="checkbox" x-model="reduceMotion" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+
+      <label class="flex cursor-pointer items-center justify-between">
+        <span class="font-medium text-ink-700">Readable font</span>
+        <input type="checkbox" x-model="readableFont" @change="apply()" class="h-5 w-9 cursor-pointer appearance-none rounded-full bg-navy-900/15 transition-colors checked:bg-brand-red-600 relative before:absolute before:left-0.5 before:top-0.5 before:h-4 before:w-4 before:rounded-full before:bg-white before:transition-transform checked:before:translate-x-4" />
+      </label>
+    </div>
+
+    <button @click="resetAll()" class="mt-5 w-full rounded-full border border-navy-900/15 py-2 text-xs font-semibold text-ink-500 hover:bg-cream-100">
+      Reset all
+    </button>
+
+    <a href="/accessibility/" class="mt-3 block text-center text-xs font-semibold text-brand-red-600 hover:text-brand-red-700">
+      Full accessibility statement →
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("alpine:init", () => {
+    window.Alpine.data("a11yWidget", () => ({
+      open: false,
+      fontStep: 0,
+      contrast: false,
+      underlineLinks: false,
+      reduceMotion: false,
+      readableFont: false,
+
+      init() {
+        try {
+          const saved = JSON.parse(localStorage.getItem("gj-a11y") || "{}");
+          this.fontStep = saved.fontStep ?? 0;
+          this.contrast = saved.contrast ?? false;
+          this.underlineLinks = saved.underlineLinks ?? false;
+          this.reduceMotion = saved.reduceMotion ?? false;
+          this.readableFont = saved.readableFont ?? false;
+        } catch {}
+        this.apply();
+      },
+
+      persist() {
+        try {
+          localStorage.setItem(
+            "gj-a11y",
+            JSON.stringify({
+              fontStep: this.fontStep,
+              contrast: this.contrast,
+              underlineLinks: this.underlineLinks,
+              reduceMotion: this.reduceMotion,
+              readableFont: this.readableFont,
+            })
+          );
+        } catch {}
+      },
+
+      apply() {
+        const root = document.documentElement;
+        root.style.setProperty("--a11y-font-scale", String(1 + this.fontStep * 0.1));
+        root.classList.toggle("a11y-contrast", this.contrast);
+        root.classList.toggle("a11y-underline-links", this.underlineLinks);
+        root.classList.toggle("a11y-reduce-motion", this.reduceMotion);
+        root.classList.toggle("a11y-readable-font", this.readableFont);
+        this.persist();
+      },
+
+      increaseFontSize() {
+        this.fontStep = Math.min(this.fontStep + 1, 5);
+        this.apply();
+      },
+      decreaseFontSize() {
+        this.fontStep = Math.max(this.fontStep - 1, -2);
+        this.apply();
+      },
+      resetFontSize() {
+        this.fontStep = 0;
+        this.apply();
+      },
+      resetAll() {
+        this.fontStep = 0;
+        this.contrast = false;
+        this.underlineLinks = false;
+        this.reduceMotion = false;
+        this.readableFont = false;
+        this.apply();
+      },
+    }));
+  });
+</script>
+
+<style is:global>
+  html {
+    font-size: calc(100% * var(--a11y-font-scale, 1));
+  }
+
+  .a11y-underline-links a {
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+  }
+
+  .a11y-reduce-motion *,
+  .a11y-reduce-motion *::before,
+  .a11y-reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .a11y-readable-font body {
+    font-family: Verdana, "Trebuchet MS", Arial, sans-serif !important;
+    letter-spacing: 0.01em;
+  }
+
+  .a11y-contrast {
+    filter: contrast(1.15);
+  }
+  .a11y-contrast body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .a11y-contrast a {
+    color: #b8020c !important;
+  }
+</style>
