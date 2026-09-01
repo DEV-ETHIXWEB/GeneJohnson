@@ -21,6 +21,26 @@ export interface Props {
 }
 
 const { title, description, path, image, noindex, schema = [] } = Astro.props;
+
+// Auto-noindex any non-production build so preview/staging deploys never get
+// crawled, without relying on every page to opt in manually. CONTEXT is
+// Netlify's deploy-context env var (production/deploy-preview/branch-deploy);
+// VERCEL_ENV is Vercel's equivalent (production/preview/development). Neither
+// is set locally, so `astro dev` and local builds are unaffected.
+const isNonProductionDeploy =
+  (typeof process !== "undefined" &&
+    ((process.env.CONTEXT && process.env.CONTEXT !== "production") ||
+      (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production"))) ||
+  false;
+const effectiveNoindex = noindex || isNonProductionDeploy;
+
+// Every page gets a LocalBusiness block for free - except pages that already
+// pass their own (city and service-area pages add a more specific `areaServed`
+// variant). Auto-adding on top of that produced two HomeAndConstructionBusiness
+// blocks on the same page, which is exactly the "duplicate structured data"
+// SEO checklist item flags.
+const hasOwnLocalBusinessSchema = schema.some((s) => (s as { "@type"?: string } | null)?.["@type"] === "HomeAndConstructionBusiness");
+const fullSchema = hasOwnLocalBusinessSchema ? schema : [localBusinessSchema(), ...schema];
 ---
 
 <!doctype html>
@@ -46,8 +66,9 @@ const { title, description, path, image, noindex, schema = [] } = Astro.props;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <Seo title={title} description={description} path={path} image={image} noindex={noindex} schema={[localBusinessSchema(), ...schema]} />
+    <Seo title={title} description={description} path={path} image={image} noindex={effectiveNoindex} schema={fullSchema} />
     <ClientRouter />
+    <script src="../scripts/error-monitoring.ts"></script>
   </head>
   <body class="bg-cream-50 text-ink-900 antialiased">
     <EmergencyBar />
