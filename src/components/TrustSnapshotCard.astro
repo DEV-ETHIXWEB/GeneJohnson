@@ -1,0 +1,25 @@
+---
+import { site } from "../data/site";
+---
+
+<div class="rounded-2xl border border-navy-900/10 bg-cream-100 p-5">
+  <div class="flex items-center gap-2">
+    <span class="font-display text-2xl font-extrabold text-navy-900">{site.aggregateRating.ratingValue}</span>
+    <span class="text-brand-red-600">★★★★★</span>
+  </div>
+  <p class="mt-1 text-xs text-ink-500">{Number(site.aggregateRating.reviewCount).toLocaleString()}+ five-star reviews</p>
+  <div class="mt-4 space-y-2.5 border-t border-navy-900/10 pt-4 text-sm text-ink-700">
+    <p class="flex items-center gap-2">
+      <svg class="h-4 w-4 shrink-0 text-accent-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+      Family owned since {site.since}
+    </p>
+    <p class="flex items-center gap-2">
+      <svg class="h-4 w-4 shrink-0 text-accent-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+      Licensed &amp; insured
+    </p>
+    <p class="flex items-center gap-2">
+      <svg class="h-4 w-4 shrink-0 text-accent-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.9 3.9 6.7-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+      24/7 emergency dispatch
+    </p>
+  </div>
+</div>

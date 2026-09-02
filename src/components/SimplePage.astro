@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "./PageHero.astro";
 import CTASection from "./CTASection.astro";
 import CallNowCard from "./CallNowCard.astro";
+import TrustSnapshotCard from "./TrustSnapshotCard.astro";
+import Testimonials from "./home/Testimonials.astro";
 import { site } from "../data/site";
 import { breadcrumbSchema } from "../lib/schema";
 
@@ -33,11 +35,13 @@ const { title, description, path, eyebrow, tagline, breadcrumbs, hideCta = false
       <div class="prose-content max-w-2xl" data-animate>
         <slot />
       </div>
-      <div class="lg:sticky lg:top-28 lg:self-start">
+      <div class="flex flex-col gap-5 lg:sticky lg:top-28 lg:self-start">
         <CallNowCard />
+        <TrustSnapshotCard />
       </div>
     </div>
   </div>
+  <Testimonials />
   {!hideCta && <CTASection />}
 </BaseLayout>
 
