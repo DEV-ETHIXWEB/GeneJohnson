@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { verticals } from "../../data/services";
+import CallNowCard from "../../components/CallNowCard.astro";
+import ServiceMultiSelect from "../../components/ServiceMultiSelect.astro";
 import { site, formEndpoint } from "../../data/site";
 import { breadcrumbSchema } from "../../lib/schema";
 ---
@@ -19,54 +20,49 @@ import { breadcrumbSchema } from "../../lib/schema";
     breadcrumbs={[{ name: "Home", href: "/" }, { name: "Schedule Now" }]}
   />
 
-  <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-    <form data-animate x-data="{ service: '' }" class="rounded-3xl border border-navy-900/10 bg-white p-8 shadow-soft" action={formEndpoint} method="POST">
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label class="text-sm font-semibold text-ink-700" for="name">Full name</label>
-          <input id="name" name="name" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1fr_320px]">
+      <form data-animate data-track-form="schedule_now" class="rounded-3xl border border-navy-900/10 bg-white p-8 shadow-soft" action={formEndpoint} method="POST">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="text-sm font-semibold text-ink-700" for="name">Full name</label>
+            <input id="name" name="name" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-ink-700" for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-semibold text-ink-700" for="address">Service address</label>
+            <input id="address" name="address" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
+          </div>
+          <div class="sm:col-span-2">
+            <p class="text-sm font-semibold text-ink-700">What do you need help with? <span class="font-normal text-ink-500">(choose all that apply)</span></p>
+            <div class="mt-1.5">
+              <ServiceMultiSelect idPrefix="schedule" />
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-semibold text-ink-700" for="details">Details</label>
+            <textarea id="details" name="details" rows="4" class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"></textarea>
+          </div>
+          <div class="sm:col-span-2 flex items-start gap-2.5">
+            <input id="consent" name="consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-navy-900/30" />
+            <label for="consent" class="text-xs leading-relaxed text-ink-500">
+              I agree to be contacted by Gene Johnson by phone, text, or email regarding my service request. Message and data rates may apply.
+            </label>
+          </div>
         </div>
-        <div>
-          <label class="text-sm font-semibold text-ink-700" for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
-        </div>
-        <div class="sm:col-span-2">
-          <label class="text-sm font-semibold text-ink-700" for="address">Service address</label>
-          <input id="address" name="address" required class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none" />
-        </div>
-        <div class="sm:col-span-2">
-          <label class="text-sm font-semibold text-ink-700" for="service">What do you need help with?</label>
-          <select id="service" name="service" x-model="service" class="mt-1.5 w-full rounded-xl border border-navy-900/15 bg-white px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none">
-            {verticals.map((v) => <option value={v.title}>{v.title}</option>)}
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="sm:col-span-2" x-show="service === 'Other'" x-cloak x-transition>
-          <label class="text-sm font-semibold text-ink-700" for="service-other">Please specify</label>
-          <input
-            id="service-other"
-            name="service_other"
-            placeholder="Tell us briefly what you need help with"
-            class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"
-          />
-        </div>
-        <div class="sm:col-span-2">
-          <label class="text-sm font-semibold text-ink-700" for="details">Details</label>
-          <textarea id="details" name="details" rows="4" class="mt-1.5 w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"></textarea>
-        </div>
-        <div class="sm:col-span-2 flex items-start gap-2.5">
-          <input id="consent" name="consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-navy-900/30" />
-          <label for="consent" class="text-xs leading-relaxed text-ink-500">
-            I agree to be contacted by Gene Johnson by phone, text, or email regarding my service request. Message and data rates may apply.
-          </label>
-        </div>
+        <button type="submit" data-magnetic class="mt-6 w-full rounded-full bg-brand-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lift transition-transform hover:scale-[1.02] hover:bg-brand-red-700">
+          Request service
+        </button>
+        <p class="mt-4 text-center text-sm text-ink-500">
+          Prefer to talk now? Call <a href={site.phoneHref} class="font-semibold text-brand-red-600">{site.phoneDisplay}</a>
+        </p>
+      </form>
+      <div class="lg:sticky lg:top-28 lg:self-start">
+        <CallNowCard />
       </div>
-      <button type="submit" data-magnetic class="mt-6 w-full rounded-full bg-brand-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lift transition-transform hover:scale-[1.02] hover:bg-brand-red-700">
-        Request service
-      </button>
-      <p class="mt-4 text-center text-sm text-ink-500">
-        Prefer to talk now? Call <a href={site.phoneHref} class="font-semibold text-brand-red-600">{site.phoneDisplay}</a>
-      </p>
-    </form>
+    </div>
   </section>
 </BaseLayout>

@@ -65,10 +65,15 @@ const fullSchema = hasOwnLocalBusinessSchema ? schema : [localBusinessSchema(), 
       the SDK would load but every event send would be silently blocked by
       CSP, making the feature look configured while reporting nothing. Widen
       this (or point at your relay) if using a self-hosted Sentry instance.
+
+      script-src/connect-src also allow Google's tag + analytics hosts for
+      analytics.ts (src/scripts/analytics.ts) - same reasoning: without
+      these, gtag.js would either fail to load or load and then have every
+      hit silently blocked once PUBLIC_GA_MEASUREMENT_ID is set.
     -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io https://*.sentry.io https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; base-uri 'self'; object-src 'none'"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io https://*.sentry.io https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; base-uri 'self'; object-src 'none'"
     />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -76,6 +81,7 @@ const fullSchema = hasOwnLocalBusinessSchema ? schema : [localBusinessSchema(), 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <Seo title={title} description={description} path={path} image={image} noindex={effectiveNoindex} schema={fullSchema} />
     <ClientRouter />
+    <script src="../scripts/analytics.ts"></script>
     <script src="../scripts/error-monitoring.ts"></script>
   </head>
   <body class="bg-cream-50 text-ink-900 antialiased">
@@ -98,5 +104,6 @@ const fullSchema = hasOwnLocalBusinessSchema ? schema : [localBusinessSchema(), 
     -->
     <script src="../scripts/alpine-init.ts"></script>
     <script src="../scripts/motion.ts"></script>
+    <script src="../scripts/form-tracking.ts"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 import { site, formEndpoint } from "../../data/site";
-import { verticals } from "../../data/services";
 import Icon from "../Icon.astro";
+import ServiceMultiSelect from "../ServiceMultiSelect.astro";
 
 const words = ["Clean.", "Experienced.", "Professional."];
 ---
@@ -99,7 +99,7 @@ const words = ["Clean.", "Experienced.", "Professional."];
         <span class="text-xs font-medium text-ink-500">2,400+ reviews</span>
       </div>
 
-      <form x-data="{ service: '' }" action={formEndpoint} method="POST" class="rounded-3xl border border-white/10 bg-white/95 p-6 shadow-lift backdrop-blur">
+      <form data-track-form="hero_quote" action={formEndpoint} method="POST" class="rounded-3xl border border-white/10 bg-white/95 p-6 shadow-lift backdrop-blur">
         <input type="hidden" name="source" value="Homepage Hero" />
         <p class="font-display text-lg font-bold text-navy-900">Get a free quote</p>
         <p class="mt-1 text-xs text-ink-500">We'll call or text you back within minutes.</p>
@@ -127,26 +127,8 @@ const words = ["Clean.", "Experienced.", "Professional."];
             />
           </div>
           <div>
-            <label class="sr-only" for="hero-service">Service needed</label>
-            <select
-              id="hero-service"
-              name="service"
-              x-model="service"
-              class="w-full rounded-xl border border-navy-900/15 bg-white px-4 py-2.5 text-sm text-ink-700 focus:border-brand-red-500 focus:outline-none"
-            >
-              <option value="">What do you need help with?</option>
-              {verticals.map((v) => <option value={v.title}>{v.title}</option>)}
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div x-show="service === 'Other'" x-cloak x-transition>
-            <label class="sr-only" for="hero-service-other">Tell us what you need</label>
-            <input
-              id="hero-service-other"
-              name="service_other"
-              placeholder="Briefly, what do you need help with?"
-              class="w-full rounded-xl border border-navy-900/15 px-4 py-2.5 text-sm focus:border-brand-red-500 focus:outline-none"
-            />
+            <p class="mb-1.5 text-xs font-semibold text-ink-700">What do you need help with? <span class="font-normal text-ink-500">(choose all that apply)</span></p>
+            <ServiceMultiSelect idPrefix="hero" />
           </div>
         </div>
 
