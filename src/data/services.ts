@@ -69,6 +69,7 @@ export const verticals: Vertical[] = [
       { slug: "water-softeners", title: "Water Softeners", icon: "Water Filtration" },
       { slug: "sump-pumps", title: "Sump Pumps", icon: "Sump Pump" },
       { slug: "city-sewer-hookup", title: "City Sewer Hookup", icon: "Sewer Replacement" },
+      { slug: "septic-tank-services", title: "Septic Tank Services", icon: "Sewer Line" },
       { slug: "wet-yards", title: "Wet Yard Solutions", icon: "Drain & Sewer" },
     ],
   },

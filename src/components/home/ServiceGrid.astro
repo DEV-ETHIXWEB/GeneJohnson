@@ -11,6 +11,15 @@ const hoverAccents: Record<string, string> = {
   red: "hover:border-brand-red-600 hover:bg-brand-red-600",
   navy: "hover:border-navy-900 hover:bg-navy-900",
 };
+
+// accent-green-500 and white/70 both fail WCAG AA contrast against the red
+// hover background (2.75:1 and 2.83:1 respectively - needs 4.5:1), even
+// though they read fine against navy. Verified via axe-core against the
+// actual hovered element for every vertical, not just eyeballed.
+const hoverText: Record<string, { tagline: string; explore: string }> = {
+  red: { tagline: "group-hover:text-white", explore: "group-hover:text-white" },
+  navy: { tagline: "group-hover:text-white/70", explore: "group-hover:text-accent-green-500" },
+};
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -35,8 +44,8 @@ const hoverAccents: Record<string, string> = {
           <Icon name={v.icon} class="h-[4.5rem] w-[4.5rem] text-navy-700 transition-all duration-300 group-hover:scale-110 group-hover:text-white" />
         </span>
         <h3 class="mt-5 font-display text-xl font-bold text-navy-900 transition-colors duration-300 group-hover:text-white">{v.title}</h3>
-        <p class="mt-2 flex-1 text-sm text-ink-500 transition-colors duration-300 group-hover:text-white/70">{v.tagline}</p>
-        <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-red-600 transition-colors duration-300 group-hover:text-accent-green-500">
+        <p class:list={["mt-2 flex-1 text-sm text-ink-500 transition-colors duration-300", hoverText[v.color].tagline]}>{v.tagline}</p>
+        <span class:list={["mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-red-600 transition-colors duration-300", hoverText[v.color].explore]}>
           Explore {v.title}
           <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>

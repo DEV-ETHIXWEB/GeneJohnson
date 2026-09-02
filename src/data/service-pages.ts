@@ -306,6 +306,32 @@ export const servicePages: ServicePage[] = [
     image: "collapsed-sewer-line",
   },
   {
+    slug: "septic-tank-services",
+    title: "Septic Tank Services",
+    vertical: "plumbing",
+    icon: "Sewer Line",
+    tagline: "Inspection, pumping, and repair for homes outside the city sewer system.",
+    intro: [
+      "A lot of Puget Sound homes, especially in unincorporated King, Snohomish, and Pierce County, run on a septic system instead of city sewer. We handle the plumbing side of keeping that system working - inspection, pumping, and repair.",
+      "Slow drains throughout the whole house, a sewage smell near the tank or drain field, and unusually soggy or bright-green grass over the drain field are usually the first signs something needs attention before it turns into a backup indoors.",
+      "We inspect the tank and drain field, pump the tank when it's due, and diagnose the actual cause of a backup or odor rather than just clearing the immediate symptom and leaving the underlying issue to come back.",
+      "Most counties require periodic septic inspection and pumping on a set schedule to stay in compliance - we handle the service call and can help you keep the paperwork straight for your records.",
+    ],
+    highlights: [
+      "Septic tank pumping and cleaning",
+      "Inspection for county compliance records",
+      "Drain field diagnosis for standing water or odor",
+      "Camera inspection available for connecting lines",
+      "Serving unincorporated King, Snohomish, and Pierce County homes",
+      "Coordination available if you're planning a future city sewer hookup",
+    ],
+    faqs: [
+      { q: "How often does a septic tank need to be pumped?", a: "Most residential tanks need pumping every 3 to 5 years depending on household size and tank capacity - we can check your tank's fill level and tell you where you stand." },
+      { q: "What are the warning signs my septic system needs attention?", a: "Slow drains throughout the house (not just one fixture), a sewage smell near the tank or drain field, and unusually soggy or bright-green grass over the drain field are the most common signs." },
+    ],
+    image: "plumbing-service-generic",
+  },
+  {
     slug: "repiping",
     title: "Whole-Home Repiping",
     vertical: "plumbing",

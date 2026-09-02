@@ -58,9 +58,17 @@ const fullSchema = hasOwnLocalBusinessSchema ? schema : [localBusinessSchema(), 
       Header.astro to fit its safe-subset evaluator. Fine for a static
       marketing site with no auth/payment flows; revisit if that changes.
     -->
+    <!--
+      connect-src includes Sentry's managed-SaaS ingest hosts so
+      error-monitoring.ts (src/scripts/error-monitoring.ts) actually has
+      somewhere to report to once PUBLIC_SENTRY_DSN is set - without these,
+      the SDK would load but every event send would be silently blocked by
+      CSP, making the feature look configured while reporting nothing. Widen
+      this (or point at your relay) if using a self-hosted Sentry instance.
+    -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io; base-uri 'self'; object-src 'none'"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io https://*.sentry.io https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; base-uri 'self'; object-src 'none'"
     />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
